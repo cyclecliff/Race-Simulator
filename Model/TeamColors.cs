@@ -4,10 +4,12 @@ using System.Text;
 
 namespace Model
 {
-    public interface TeamColors
+    enum TeamColors
     {
-
-
-
+        Red,
+        Green,
+        Yellow,
+        Grey,
+        Blue
     }
 }
