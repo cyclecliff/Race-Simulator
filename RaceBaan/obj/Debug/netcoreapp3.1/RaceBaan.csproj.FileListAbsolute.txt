@@ -1,0 +1,13 @@
+C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\bin\Debug\netcoreapp3.1\RaceBaan.exe
+C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\bin\Debug\netcoreapp3.1\RaceBaan.deps.json
+C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\bin\Debug\netcoreapp3.1\RaceBaan.runtimeconfig.json
+C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\bin\Debug\netcoreapp3.1\RaceBaan.runtimeconfig.dev.json
+C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\bin\Debug\netcoreapp3.1\RaceBaan.dll
+C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\bin\Debug\netcoreapp3.1\RaceBaan.pdb
+C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.csprojAssemblyReference.cache
+C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.AssemblyInfoInputs.cache
+C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.AssemblyInfo.cs
+C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.csproj.CoreCompileInputs.cache
+C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.dll
+C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.pdb
+C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.genruntimeconfig.cache

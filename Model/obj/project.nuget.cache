@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "J9Q6wUXaK9purlJwZXVpUtE2cqHLGUY2m0iXtVz2561nN0AS9glj1ZgE9q9IeLIRZeH7Hji26Ry3XD5pS5BQpA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lubbe\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\lubbe\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
