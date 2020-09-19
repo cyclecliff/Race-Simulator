@@ -4,7 +4,13 @@ using System.Text;
 
 namespace Controller
 {
-    class Data
+    using Model;
+    static class Data 
     {
+        static Competition
+        
+
+
+
     }
 }

@@ -26,7 +26,11 @@
         },
         "frameworks": {
           "netstandard2.0": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
