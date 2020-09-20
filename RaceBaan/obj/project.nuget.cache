@@ -1,8 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "V/2h0c4tF8vIpk/vo7FW4appgvB5Xutv66cgvy1d+JDPA42FERKydz/xuhLUg6poQjlAtXYat978Uw6nP/xLQw==",
+  "dgSpecHash": "fYTKKee/BTMZZShifGliaFw8RLszxRpnZZ/drp/ce3unSukL0jBtH+b33jEuzwaMAAUdfjzWcgRlEeHB+U4agw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\RaceBaan\\RaceBaan.csproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "projectFilePath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\RaceBaan\\RaceBaan.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lubbe\\.nuget\\packages\\exchangeapi\\1.543.1922\\exchangeapi.1.543.1922.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'ExchangeAPI 1.543.1922' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "ExchangeAPI",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }
