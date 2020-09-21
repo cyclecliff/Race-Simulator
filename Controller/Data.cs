@@ -5,11 +5,23 @@ using System.Text;
 namespace Controller
 {
     using Model;
-    static class Data 
-    {
-        static Competition
-        
+    using System.Xml.Schema;
 
+    static class Data
+    {
+        static Competition 
+        //public static void Competition() 
+        //{ 
+        //}
+        static void Competition() //VRAAG!!!!
+        {
+
+        }
+
+        static void addParticipant()
+        {
+            Model.Competition
+        }
 
 
     }

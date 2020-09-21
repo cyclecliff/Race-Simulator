@@ -11,3 +11,9 @@ C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\ob
 C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.dll
 C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.pdb
 C:\Users\lubbe\OneDrive\E L O\Programmeren in C-sharp\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.genruntimeconfig.cache
+C:\Users\lubbe\Documents\GitHub\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.csprojAssemblyReference.cache
+C:\Users\lubbe\Documents\GitHub\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.AssemblyInfoInputs.cache
+C:\Users\lubbe\Documents\GitHub\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.AssemblyInfo.cs
+C:\Users\lubbe\Documents\GitHub\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.csproj.CoreCompileInputs.cache
+C:\Users\lubbe\Documents\GitHub\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.dll
+C:\Users\lubbe\Documents\GitHub\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.pdb
