@@ -4,16 +4,22 @@ using System.Text;
 
 namespace Model
 {
-    class Competition
+    public class Competition
     {
-        List<IParticipant> Participants { get; set; }
+        public List<IParticipant> Participants { get; set; }
         Queue<Track> Tracks             { get; set; }
 
-
-
-        public Track NextTrack()
+        public Competition()
         {
-            return null;
+            Participants = new List<IParticipant>();
+            Tracks = new Queue<Track>();
+            //Participants.Add
+        }
+
+        
+        Track NextTrack()
+        {
+            return Tracks.Dequeue();
         }
     }
 }

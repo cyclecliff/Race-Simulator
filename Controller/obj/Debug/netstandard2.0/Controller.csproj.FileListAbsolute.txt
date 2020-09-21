@@ -1,4 +1,15 @@
+<<<<<<< HEAD
 C:\Users\lubbe\Documents\GitHub\Race Simulator\Controller\obj\Debug\netstandard2.0\Controller.csprojAssemblyReference.cache
 C:\Users\lubbe\Documents\GitHub\Race Simulator\Controller\obj\Debug\netstandard2.0\Controller.AssemblyInfoInputs.cache
 C:\Users\lubbe\Documents\GitHub\Race Simulator\Controller\obj\Debug\netstandard2.0\Controller.AssemblyInfo.cs
 C:\Users\lubbe\Documents\GitHub\Race Simulator\Controller\obj\Debug\netstandard2.0\Controller.csproj.CoreCompileInputs.cache
+=======
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\Controller\bin\Debug\netstandard2.0\Controller.deps.json
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\Controller\bin\Debug\netstandard2.0\Controller.dll
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\Controller\bin\Debug\netstandard2.0\Model.dll
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\Controller\bin\Debug\netstandard2.0\Model.pdb
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\Controller\obj\Debug\netstandard2.0\Controller.csprojAssemblyReference.cache
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\Controller\obj\Debug\netstandard2.0\Controller.AssemblyInfoInputs.cache
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\Controller\obj\Debug\netstandard2.0\Controller.AssemblyInfo.cs
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\Controller\obj\Debug\netstandard2.0\Controller.csproj.CopyComplete
+>>>>>>> f00cd626e2f7d793d398829907a67652e3c9b317

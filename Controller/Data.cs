@@ -5,24 +5,28 @@ using System.Text;
 namespace Controller
 {
     using Model;
-    using System.Xml.Schema;
+    using System.Security.Cryptography.X509Certificates;
 
-    static class Data
+    public static class Data
     {
-        static Competition 
-        //public static void Competition() 
-        //{ 
-        //}
-        static void Competition() //VRAAG!!!!
-        {
+        public static Competition Competition { get; set; }
 
+        public static void Initialize() {
+
+            Competition = new Competition();
+            addParticipants();
+            addTracks();
+        
         }
 
-        static void addParticipant()
+        public static void addParticipants()
         {
-            Model.Competition
+           // Competition.Participants.Add();
         }
 
-
+        public static void addTracks()
+        {
+          //  Competition.Participants.Add();
+        }
     }
 }

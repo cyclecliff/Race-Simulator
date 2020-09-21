@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj",
+      "projectUniqueName": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj",
       "projectName": "Model",
-      "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj",
+      "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj",
       "packagesPath": "C:\\Users\\lubbe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\obj\\",
+      "outputPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lubbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
