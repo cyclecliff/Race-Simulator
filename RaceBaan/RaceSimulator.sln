@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaceBaan", "RaceBaan.csproj", "{CA833EBE-72C1-4F5E-A8E0-E820366611BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RaceBaan", "RaceBaan.csproj", "{CA833EBE-72C1-4F5E-A8E0-E820366611BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "..\Model\Model.csproj", "{F013863E-D3E3-481F-8261-5DF587A17B60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "..\Model\Model.csproj", "{F013863E-D3E3-481F-8261-5DF587A17B60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "..\Controller\Controller.csproj", "{9B2A2210-5B29-45FB-A8D1-137E2D692265}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controller", "..\Controller\Controller.csproj", "{9B2A2210-5B29-45FB-A8D1-137E2D692265}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerTest", "..\ControllerTest\ControllerTest.csproj", "{AF4AFF6F-E293-4FAF-97AA-F135D981AA48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControllerTest", "..\ControllerTest\ControllerTest.csproj", "{AF4AFF6F-E293-4FAF-97AA-F135D981AA48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

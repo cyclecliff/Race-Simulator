@@ -13,3 +13,4 @@ C:\Users\lubbe\Documents\GitHub\Race-Simulator\Controller\obj\Debug\netstandard2
 C:\Users\lubbe\Documents\GitHub\Race-Simulator\Controller\obj\Debug\netstandard2.0\Controller.AssemblyInfo.cs
 C:\Users\lubbe\Documents\GitHub\Race-Simulator\Controller\obj\Debug\netstandard2.0\Controller.csproj.CopyComplete
 >>>>>>> f00cd626e2f7d793d398829907a67652e3c9b317
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\Controller\obj\Debug\netstandard2.0\Controller.csproj.CoreCompileInputs.cache
