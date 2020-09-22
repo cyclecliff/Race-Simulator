@@ -4,15 +4,19 @@ using System.Text;
 
 namespace Model
 {
-    class Track
+    public class Track
     {
-        string Name                     { get; set; }
-        LinkedList<Section> Sections    { get; set; }
-
+        
         public Track(string name, SectionTypes[] sections)
         {
-
+            Name = name;
+            //Sections = sections;
         }
+
+        public string Name                     { get; set; }
+        public LinkedList<Section> Sections    { get; set; }
+
+        
 
     }
 }

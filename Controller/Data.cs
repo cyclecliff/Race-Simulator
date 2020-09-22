@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Controller
+﻿namespace Controller
 {
     using Model;
-    using System.Security.Cryptography.X509Certificates;
 
     public static class Data
     {
@@ -16,17 +11,97 @@ namespace Controller
             Competition = new Competition();
             addParticipants();
             addTracks();
-        
         }
 
         public static void addParticipants()
         {
-           // Competition.Participants.Add();
+            Driver participant1 = new Driver();     //klopt dit?
+            Driver participant2 = new Driver();
+            Driver participant3 = new Driver();
+
+           Competition.Participants.Add(participant1);
+           Competition.Participants.Add(participant2);
+           Competition.Participants.Add(participant3);
         }
 
         public static void addTracks()
         {
-          //  Competition.Participants.Add();
+
+            Track track1 = new Track("H-Vorm 3x3", new[] {  SectionTypes.StartGrid, 
+                                                            SectionTypes.Straight, 
+                                                            SectionTypes.RightCorner, 
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.LeftCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.LeftCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.LeftCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.LeftCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Finish
+            });
+            Track track2 = new Track("O-Vorm 3x3", new[] {  SectionTypes.StartGrid,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Finish
+
+            });
+            Track track3 = new Track("L-Vorm 3x3", new[] {  SectionTypes.StartGrid,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.LeftCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.LeftCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.LeftCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.LeftCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.LeftCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Finish
+            });
+
+
+            Competition.Tracks.Enqueue(track1);  //klopt dit?
+            Competition.Tracks.Enqueue(track2);
+            Competition.Tracks.Enqueue(track3);
         }
     }
 }
