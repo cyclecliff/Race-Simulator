@@ -14,10 +14,36 @@ namespace Controller
         private Dictionary<Section, SectionData> _positions;
 
         public SectionData GetSectionData(Section section)
-        { //als op section plek geen value
-            SectionData _sectiondata = _positions[section];
+        {
+            SectionData value;
 
-            return _sectiondata;
+            if (_positions.TryGetValue(section, out value))
+            {
+                return value;
+
+            } else
+            {
+                _positions[section] = new SectionData();
+
+                return value;
+            }
+            
         }
+
+        public Race(Track _track, List<IParticipant> _participants)
+        {
+            track           = _track;
+            Participants    = _participants;
+            _random         = new Random(DateTime.Now.Millisecond);
+        }
+
+        public void RandomizeEquipment(List<IParticipant> _participants)
+        {
+            foreach(IParticipant participant in _participants)
+            {
+                participant.Equipment = _random;
+            }   
+        }
+
     }
 }

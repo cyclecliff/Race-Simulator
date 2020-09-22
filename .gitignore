@@ -11,3 +11,9 @@ Controller/obj/Debug/netstandard2.0/Controller.assets.cache
 *.cache
 *.cache
 *.cache
+*.cache
+*.json
+*.cache
+*.cache
+RaceBaan/obj/project.nuget.cache
+*.json

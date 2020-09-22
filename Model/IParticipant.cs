@@ -8,8 +8,8 @@ namespace Model
     {
         string Name             { get; set; }
         int Points              { get; set; }
-        IEquipment Equipment { get; set; }
-        TeamColors TeamColor { get; set; }
+        IEquipment Equipment    { get; set; }
+        TeamColors TeamColor    { get; set; }
 
 
 
