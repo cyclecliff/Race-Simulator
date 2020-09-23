@@ -35,9 +35,9 @@ namespace Controller
             track           = _track;
             Participants    = _participants;
             _random         = new Random(DateTime.Now.Millisecond);
-        }
+        }              
 
-        public void RandomizeEquipment(List<IParticipant> _participants)
+        public void RandomizeEquipment(List<IParticipant> _participants)     
         {
             foreach(IParticipant participant in _participants)
             {
