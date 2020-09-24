@@ -16,7 +16,7 @@ namespace Model
         }
 
         
-        Track NextTrack()
+        public Track NextTrack()
         {
             return Tracks.Dequeue();
         }

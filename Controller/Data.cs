@@ -5,6 +5,9 @@
     public static class Data
     {
         public static Competition Competition { get; set; }
+        public static Race        CurrentRace;
+
+
 
         public static void Initialize() {
 
@@ -12,6 +15,13 @@
             addParticipants();
             addTracks();
         }
+
+
+        public static void NextRace()
+        {
+            return new Race(Competition.NextTrack(), );//ffs get help friday
+        }
+
 
         public static void addParticipants()
         {

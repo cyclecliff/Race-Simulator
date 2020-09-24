@@ -41,7 +41,8 @@ namespace Controller
         {
             foreach(IParticipant participant in _participants)
             {
-                participant.Equipment = _random;
+                participant.Equipment.Quality       = _random.Next();
+                participant.Equipment.Performance   = _random.Next();
             }   
         }
 
