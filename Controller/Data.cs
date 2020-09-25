@@ -7,8 +7,6 @@
         public static Competition Competition { get; set; }
         public static Race        CurrentRace;
 
-
-
         public static void Initialize() {
 
             Competition = new Competition();
@@ -19,7 +17,11 @@
 
         public static void NextRace()
         {
-            return new Race(Competition.NextTrack(), );//ffs get help friday
+            Track t = Competition.NextTrack();
+            if(!(t == null))
+            {
+                CurrentRace = new Race(t, Competition.Participants);
+            }
         }
 
 
@@ -36,8 +38,8 @@
 
         public static void addTracks()
         {
-
-            Track track1 = new Track("H-Vorm 3x3", new[] {  SectionTypes.StartGrid, 
+            //probably need to rework this later
+            Track track1 = new Track("H-Vorm 3x3", new[] {  SectionTypes.StartGrid, //blok 2 posities voor 2 drivers
                                                             SectionTypes.Straight, 
                                                             SectionTypes.RightCorner, 
                                                             SectionTypes.Straight,
@@ -66,7 +68,7 @@
                                                             SectionTypes.RightCorner,
                                                             SectionTypes.Straight,
                                                             SectionTypes.Straight,
-                                                            SectionTypes.Finish
+                                                            SectionTypes.Finish       //blok
             });
             Track track2 = new Track("O-Vorm 3x3", new[] {  SectionTypes.StartGrid,
                                                             SectionTypes.Straight,

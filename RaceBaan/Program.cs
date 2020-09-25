@@ -1,12 +1,23 @@
-﻿using System;
+﻿using Controller;
+using System;
+using System.Threading;
 
 namespace RaceBaan
 {
-    class Program
+    public class Program 
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Data.Initialize();
+            Data.NextRace();
+            Console.WriteLine(Data.CurrentRace.track.Name);
+
+            for(; ; )
+            {
+                Thread.Sleep(100);
+            }
+
+
         }
     }
 }
