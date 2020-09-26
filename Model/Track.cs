@@ -6,7 +6,10 @@ namespace Model
 {
     public class Track
     {
-        
+        public Track() //just for testing
+        {
+        }
+
         public Track(string name, SectionTypes[] sections)
         {
             Name = name;

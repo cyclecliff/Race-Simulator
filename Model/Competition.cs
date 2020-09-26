@@ -15,10 +15,17 @@ namespace Model
             Tracks = new Queue<Track>();
         }
 
-        
-        public Track NextTrack()
+
+        public Track NextTrack() //hij is niet 0, maar volgens de message is de que emtpy?
         {
-            return Tracks.Dequeue();
+            if (!(Tracks.Count==0))
+            {
+                return null;
+            }
+            else
+            {
+                return Tracks.Dequeue();
+            }
         }
     }
 }
