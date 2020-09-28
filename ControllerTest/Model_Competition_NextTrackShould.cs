@@ -30,7 +30,7 @@ namespace ControllerTest { using Model ;
             _competition.Tracks.Enqueue(new Track());
             var result = _competition.NextTrack();
 
-            Assert.AreEqual(_competition.Tracks.Dequeue(), result);
+            Assert.AreEqual(_competition.Tracks.Dequeue(), result);   
         }
 
     }
