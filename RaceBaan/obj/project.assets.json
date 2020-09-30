@@ -77,11 +77,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\RaceBaan\\RaceBaan.csproj",
+      "projectUniqueName": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\RaceBaan\\RaceBaan.csproj",
       "projectName": "RaceBaan",
-      "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\RaceBaan\\RaceBaan.csproj",
+      "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\RaceBaan\\RaceBaan.csproj",
       "packagesPath": "C:\\Users\\lubbe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\RaceBaan\\obj\\",
+      "outputPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\RaceBaan\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lubbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -97,11 +97,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Controller\\Controller.csproj": {
-              "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Controller\\Controller.csproj"
+            "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Controller\\Controller.csproj": {
+              "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Controller\\Controller.csproj"
             },
-            "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj": {
-              "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj"
+            "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj"
             }
           }
         }
@@ -129,7 +129,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
   },

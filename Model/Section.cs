@@ -8,9 +8,9 @@ namespace Model
     {
         SectionTypes SectionType { get; set;  }
 
-        public Section(SectionData data)
+        public Section(SectionTypes sectionType)
         {
-            SectionType = data;
+            SectionType = sectionType;
         }
     }
 }

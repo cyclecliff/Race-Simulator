@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LT+kKzEXlo7DkvTZ2voVv8lJHmRwl8TRUBN9jrdz0bqzyrk9NLLs6IMCXGvomCdQrzczEWjkMY+19ECerAwwvw==",
+  "dgSpecHash": "fYTKKee/BTMZZShifGliaFw8RLszxRpnZZ/drp/ce3unSukL0jBtH+b33jEuzwaMAAUdfjzWcgRlEeHB+U4agw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\RaceBaan\\RaceBaan.csproj",
+  "projectFilePath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\RaceBaan\\RaceBaan.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lubbe\\.nuget\\packages\\exchangeapi\\1.543.1922\\exchangeapi.1.543.1922.nupkg.sha512"
   ],

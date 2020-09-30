@@ -37,3 +37,17 @@ C:\Users\lubbe\Documents\GitHub\Race Simulator\RaceBaan\bin\Debug\netcoreapp3.1\
 C:\Users\lubbe\Documents\GitHub\Race Simulator\RaceBaan\bin\Debug\netcoreapp3.1\Model.pdb
 C:\Users\lubbe\Documents\GitHub\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.csproj.CopyComplete
 C:\Users\lubbe\Documents\GitHub\Race Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.genruntimeconfig.cache
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\RaceBaan\bin\Debug\netcoreapp3.1\RaceBaan.exe
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\RaceBaan\bin\Debug\netcoreapp3.1\RaceBaan.deps.json
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\RaceBaan\bin\Debug\netcoreapp3.1\RaceBaan.runtimeconfig.json
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\RaceBaan\bin\Debug\netcoreapp3.1\RaceBaan.runtimeconfig.dev.json
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\RaceBaan\bin\Debug\netcoreapp3.1\RaceBaan.dll
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\RaceBaan\bin\Debug\netcoreapp3.1\RaceBaan.pdb
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\RaceBaan\bin\Debug\netcoreapp3.1\BetfairAPI.dll
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\RaceBaan\bin\Debug\netcoreapp3.1\ExchangeAPI.dll
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\RaceBaan\bin\Debug\netcoreapp3.1\Controller.dll
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\RaceBaan\bin\Debug\netcoreapp3.1\Model.dll
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\RaceBaan\bin\Debug\netcoreapp3.1\Controller.pdb
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\RaceBaan\bin\Debug\netcoreapp3.1\Model.pdb
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.csproj.CopyComplete
+C:\Users\lubbe\Documents\GitHub\Race-Simulator\RaceBaan\obj\Debug\netcoreapp3.1\RaceBaan.genruntimeconfig.cache

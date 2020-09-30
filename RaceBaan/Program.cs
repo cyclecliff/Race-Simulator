@@ -12,6 +12,8 @@ namespace RaceBaan
             Data.NextRace();
             Console.WriteLine(Data.CurrentRace.track.Name);
 
+
+            Console.WriteLine("'\'");
             for(; ; )
             {
                 Thread.Sleep(100);
