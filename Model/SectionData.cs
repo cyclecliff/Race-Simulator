@@ -11,5 +11,9 @@ namespace Model
         IParticipant Right  { get; set; }
         int DistanceRight   { get; set; }
 
+        public static implicit operator SectionTypes(SectionData v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -16,15 +16,15 @@ namespace Model
         }
 
 
-        public Track NextTrack() //hij is niet 0, maar volgens de message is de que emtpy?
+        public Track NextTrack() 
         {
-            if (!(Tracks.Count==0))
+            if ((Tracks.Count==0))
             {
                 return null;
             }
             else
             {
-                return Tracks.Dequeue();
+                return Tracks.Dequeue();   
             }
         }
     }
