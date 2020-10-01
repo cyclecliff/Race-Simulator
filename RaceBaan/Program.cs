@@ -13,7 +13,7 @@ namespace RaceBaan
             Console.WriteLine(Data.CurrentRace.track.Name);
 
 
-            Console.WriteLine("'\'");
+            Console.WriteLine(" \\ ");
             for(; ; )
             {
                 Thread.Sleep(100);
