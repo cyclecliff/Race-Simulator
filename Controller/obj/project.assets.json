@@ -2,17 +2,6 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
-      "ExchangeAPI/1.543.1922": {
-        "type": "package",
-        "compile": {
-          "lib/BetfairAPI.dll": {},
-          "lib/ExchangeAPI.dll": {}
-        },
-        "runtime": {
-          "lib/BetfairAPI.dll": {},
-          "lib/ExchangeAPI.dll": {}
-        }
-      },
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
@@ -50,20 +39,6 @@
     }
   },
   "libraries": {
-    "ExchangeAPI/1.543.1922": {
-      "sha512": "DqJXRUNT3E5An3nCNxcVSY+DBnsgVxvT9h244QamkJm5LN0Jvf7V9E1qHCQJg4cei6NM3g/6f0EXQHd4OystJw==",
-      "type": "package",
-      "path": "exchangeapi/1.543.1922",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "exchangeapi.1.543.1922.nupkg.sha512",
-        "exchangeapi.nuspec",
-        "lib/BetfairAPI.dll",
-        "lib/ExchangeAPI.XML",
-        "lib/ExchangeAPI.dll"
-      ]
-    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
@@ -216,7 +191,6 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "ExchangeAPI >= 1.543.1922",
       "Model >= 1.0.0",
       "NETStandard.Library >= 2.0.3"
     ]
@@ -227,11 +201,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Controller\\Controller.csproj",
+      "projectUniqueName": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Controller\\Controller.csproj",
       "projectName": "Controller",
-      "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Controller\\Controller.csproj",
+      "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Controller\\Controller.csproj",
       "packagesPath": "C:\\Users\\lubbe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Controller\\obj\\",
+      "outputPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Controller\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lubbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -247,8 +221,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj": {
-              "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj"
+            "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj"
             }
           }
         }
@@ -262,10 +236,6 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
-          "ExchangeAPI": {
-            "target": "Package",
-            "version": "[1.543.1922, )"
-          },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
@@ -283,20 +253,8 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'ExchangeAPI 1.543.1922' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
-      "libraryId": "ExchangeAPI",
-      "targetGraphs": [
-        ".NETStandard,Version=v2.0"
-      ]
-    }
-  ]
+  }
 }

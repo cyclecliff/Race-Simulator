@@ -12,4 +12,4 @@ namespace Model
         StartGrid,
         Finish
     }
-}
+} //voordat je gaat printen moet je de coordinaten van iedere section hebben

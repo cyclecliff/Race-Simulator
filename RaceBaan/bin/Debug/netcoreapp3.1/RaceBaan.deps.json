@@ -15,21 +15,8 @@
           "RaceBaan.dll": {}
         }
       },
-      "ExchangeAPI/1.543.1922": {
-        "runtime": {
-          "lib/BetfairAPI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          },
-          "lib/ExchangeAPI.dll": {
-            "assemblyVersion": "1.0.0.2",
-            "fileVersion": "1.0.0.2"
-          }
-        }
-      },
       "Controller/1.0.0": {
         "dependencies": {
-          "ExchangeAPI": "1.543.1922",
           "Model": "1.0.0"
         },
         "runtime": {
@@ -48,13 +35,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "ExchangeAPI/1.543.1922": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-DqJXRUNT3E5An3nCNxcVSY+DBnsgVxvT9h244QamkJm5LN0Jvf7V9E1qHCQJg4cei6NM3g/6f0EXQHd4OystJw==",
-      "path": "exchangeapi/1.543.1922",
-      "hashPath": "exchangeapi.1.543.1922.nupkg.sha512"
     },
     "Controller/1.0.0": {
       "type": "project",

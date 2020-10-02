@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "LuYJECZAKr50wNdFMpZ4xWrAg//me7DvBEk837dNys/xEyB0nbP418x09UENjI17K4Fp4JVbGhdagTRuc92E8Q==",
+  "dgSpecHash": "1YCJEfn1W8iksuQbVT3rMSL0d5Ht9w7T6SJa/xp9un4dSCjyYgpf7iLFO3CGwO9TDC6gtRDsvEzHEM6rVIDbDQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\ControllerTest\\ControllerTest.csproj",
+  "projectFilePath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\ControllerTest\\ControllerTest.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\lubbe\\.nuget\\packages\\exchangeapi\\1.543.1922\\exchangeapi.1.543.1922.nupkg.sha512",
     "C:\\Users\\lubbe\\.nuget\\packages\\microsoft.codecoverage\\16.4.0\\microsoft.codecoverage.16.4.0.nupkg.sha512",
     "C:\\Users\\lubbe\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\lubbe\\.nuget\\packages\\microsoft.dotnet.internalabstractions\\1.0.0\\microsoft.dotnet.internalabstractions.1.0.0.nupkg.sha512",
@@ -69,16 +68,5 @@
     "C:\\Users\\lubbe\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
     "C:\\Users\\lubbe\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'ExchangeAPI 1.543.1922' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "ExchangeAPI",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  "logs": []
 }

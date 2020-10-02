@@ -1,10 +1,10 @@
-﻿using Betfair_API_NG.TO;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Model;
 
-namespace ControllerTest { using Model ;
+namespace ControllerTest { 
 
     [TestFixture]
     public class Model_Competition_NextTrackShould
