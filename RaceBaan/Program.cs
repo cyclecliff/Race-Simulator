@@ -16,7 +16,10 @@ namespace RaceBaan
 
             Data.addTracks();
 
+            Visualization.FindXandYoffset_SetDirection(Data.CurrentRace.track);
+
             Visualization.DrawTrack(Data.CurrentRace.track);
+
 
 
 

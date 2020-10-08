@@ -7,6 +7,10 @@ namespace Model
     public class Track
     {
 
+        public int StartXoffset;
+
+        public int StartYoffset;
+
         public string Name { get; set; }
         public LinkedList<Section> Sections { get; set; }
 

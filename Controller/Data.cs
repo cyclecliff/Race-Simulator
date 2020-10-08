@@ -39,28 +39,14 @@
         public static void addTracks()
         {
             //probably need to rework this later
-            Track track1 = new Track("H-Vorm 3x3", new[] {  SectionTypes.StartGrid, //blok 2 posities voor 2 drivers
-                                                            SectionTypes.Straight, 
-                                                            SectionTypes.RightCorner, 
-                                                            SectionTypes.Straight,
-                                                            SectionTypes.RightCorner,
-                                                            SectionTypes.Straight,
-                                                            SectionTypes.LeftCorner,
-                                                            SectionTypes.Straight,
-                                                            SectionTypes.LeftCorner,
-                                                            SectionTypes.Straight,
-                                                            SectionTypes.RightCorner,
-                                                            SectionTypes.Straight,
-                                                            SectionTypes.RightCorner,
-                                                            SectionTypes.Straight,
-                                                            SectionTypes.Straight,
-                                                            SectionTypes.Straight,
+            Track track1 = new Track("H-Vorm 3x3", new[] {  SectionTypes.StartGrid,
+                                                            SectionTypes.StartGrid,
+                                                            SectionTypes.Finish,
                                                             SectionTypes.RightCorner,
                                                             SectionTypes.Straight,
                                                             SectionTypes.RightCorner,
                                                             SectionTypes.Straight,
                                                             SectionTypes.LeftCorner,
-                                                            SectionTypes.Straight,
                                                             SectionTypes.LeftCorner,
                                                             SectionTypes.Straight,
                                                             SectionTypes.RightCorner,
@@ -68,9 +54,22 @@
                                                             SectionTypes.RightCorner,
                                                             SectionTypes.Straight,
                                                             SectionTypes.Straight,
-                                                            SectionTypes.Finish       //blok
-            });
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.LeftCorner,
+                                                            SectionTypes.LeftCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.Straight,
+            }); //revamped
             Track track2 = new Track("O-Vorm 3x3", new[] {  SectionTypes.StartGrid,
+                                                            SectionTypes.StartGrid,
                                                             SectionTypes.Straight,
                                                             SectionTypes.Straight,
                                                             SectionTypes.RightCorner,
@@ -86,7 +85,7 @@
                                                             SectionTypes.Straight,
                                                             SectionTypes.Finish
 
-            });
+            }); //needs revamp
             Track track3 = new Track("L-Vorm 3x3", new[] {  SectionTypes.StartGrid,
                                                             SectionTypes.Straight,
                                                             SectionTypes.LeftCorner,
@@ -108,7 +107,7 @@
                                                             SectionTypes.Straight,
                                                             SectionTypes.Straight,
                                                             SectionTypes.Finish
-            });
+            }); //needs revamp
 
 
             Competition.Tracks.Enqueue(track1);  //klopt dit?
