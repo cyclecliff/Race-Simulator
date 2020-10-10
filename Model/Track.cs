@@ -16,6 +16,9 @@ namespace Model
 
         public Track(string name, SectionTypes[] sections)
         {
+            
+
+
             Name = name;
             Sections = sectionToLinkedList(sections);
         }

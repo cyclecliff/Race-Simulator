@@ -9,21 +9,22 @@ namespace RaceBaan
     {
 
         static void Main(string[] args)
-        {
+        { 
             Data.Initialize();
             Data.NextRace();
-            Console.WriteLine(Data.CurrentRace.track.Name);
+           //Console.WriteLine(Data.CurrentRace.track.Name);
 
             Data.addTracks();
 
-            Visualization.FindXandYoffset_SetDirection(Data.CurrentRace.track);
-
             Visualization.DrawTrack(Data.CurrentRace.track);
+            
+       
 
 
 
 
-            for(; ; )
+
+            for (; ; )
             {
                 Thread.Sleep(100);
             }
