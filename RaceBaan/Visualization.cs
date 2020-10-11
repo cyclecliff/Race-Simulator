@@ -167,7 +167,12 @@ namespace RaceBaan
 
             currentX += track.StartXoffset;
             currentY += track.StartYoffset;
-               
+
+
+            // UP    = + 5 Y
+            // RIGHT = perfect
+            // DOWN  = + 5 X
+            // LEFT  = + 5 Y / + 5 X
 
             foreach (Section section in track.Sections)
             {
@@ -198,10 +203,10 @@ namespace RaceBaan
         }
 
 
-        public static void DrawTrack(Track track)
+        public static void DrawTrack(Track track, Direction startingdirection)
         {
             // mapping functie string[] GetSectionStringArray(SectionType ST, Direction) { switch(ST) case 1} 
-            setDirections(track, Direction.Left); //seems to be doing its job
+            setDirections(track, startingdirection); //seems to be doing its job
             findOffsetXandY(track);                //5 off
             setCoordinatesOfEachSection(track);
             foreach (Section section in track.Sections)
