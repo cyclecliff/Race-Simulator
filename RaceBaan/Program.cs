@@ -17,11 +17,11 @@ namespace RaceBaan
             Data.addTracks();
 
             Data.NextRace();
-            Visualization.DrawTrack(Data.CurrentRace.track, Direction.Left);
+            Visualization.DrawTrack(Data.CurrentRace.track, Direction.Right);
             Data.NextRace();
-            Visualization.DrawTrack(Data.CurrentRace.track, Direction.Left);
+            Visualization.DrawTrack(Data.CurrentRace.track, Direction.Right);
             Data.NextRace();
-            Visualization.DrawTrack(Data.CurrentRace.track, Direction.Left);
+            Visualization.DrawTrack(Data.CurrentRace.track, Direction.Right);
 
            
 

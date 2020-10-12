@@ -167,7 +167,7 @@ namespace RaceBaan
 
             currentX += track.StartXoffset;
             currentY += track.StartYoffset;
-
+               
 
             // UP    = + 5 Y
             // RIGHT = perfect
