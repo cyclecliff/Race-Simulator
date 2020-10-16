@@ -9,11 +9,10 @@ namespace Model
         public int X;
 
         public int Y;
-
-        
         //voeg x, y en direction toe voor makkelijk gebruik in je berekeningen
 
         public SectionTypes SectionType { get; set;  }
+
         public Direction Direction { get; set; }
 
         public Section(SectionTypes sectionType)

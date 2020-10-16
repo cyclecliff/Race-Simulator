@@ -10,19 +10,16 @@ namespace RaceBaan
 
         static void Main(string[] args)
         { 
+            
             Data.Initialize();
             Data.NextRace();
            //Console.WriteLine(Data.CurrentRace.track.Name);
 
             Data.addTracks();
 
-            Data.NextRace();
-            Visualization.DrawTrack(Data.CurrentRace.track, Direction.Right);
-            Data.NextRace();
-            Visualization.DrawTrack(Data.CurrentRace.track, Direction.Right);
-            Data.NextRace();
-            Visualization.DrawTrack(Data.CurrentRace.track, Direction.Right);
-
+            //Data.NextRace();
+            Visualization.DrawTrack(Data.CurrentRace.track, Direction.Down);
+            
            
 
             for (; ; )

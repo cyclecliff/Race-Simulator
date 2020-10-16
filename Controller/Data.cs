@@ -27,9 +27,9 @@
 
         public static void addParticipants()
         {
-            Driver participant1 = new Driver();     //klopt dit?
-            Driver participant2 = new Driver();
-            Driver participant3 = new Driver();
+            Driver participant1 = new Driver("A", TeamColors.Blue);     //klopt dit?
+            Driver participant2 = new Driver("B", TeamColors.Green);
+            Driver participant3 = new Driver("C", TeamColors.Grey);
 
            Competition.Participants.Add(participant1);
            Competition.Participants.Add(participant2);

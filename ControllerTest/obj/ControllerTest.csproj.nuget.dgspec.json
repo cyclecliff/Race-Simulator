@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\ControllerTest\\ControllerTest.csproj": {}
+    "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\ControllerTest\\ControllerTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\ControllerTest\\ControllerTest.csproj": {
+    "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\ControllerTest\\ControllerTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\ControllerTest\\ControllerTest.csproj",
+        "projectUniqueName": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\ControllerTest\\ControllerTest.csproj",
         "projectName": "ControllerTest",
-        "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\ControllerTest\\ControllerTest.csproj",
+        "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\ControllerTest\\ControllerTest.csproj",
         "packagesPath": "C:\\Users\\lubbe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\ControllerTest\\obj\\",
+        "outputPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\ControllerTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lubbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,14 +27,14 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Controller\\Controller.csproj": {
-                "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Controller\\Controller.csproj"
+              "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Controller\\Controller.csproj": {
+                "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Controller\\Controller.csproj"
               },
-              "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj": {
-                "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj"
+              "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj"
               },
-              "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\RaceBaan\\RaceBaan.csproj": {
-                "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\RaceBaan\\RaceBaan.csproj"
+              "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\RaceBaan\\RaceBaan.csproj": {
+                "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\RaceBaan\\RaceBaan.csproj"
               }
             }
           }
@@ -76,18 +76,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Controller\\Controller.csproj": {
+    "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Controller\\Controller.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Controller\\Controller.csproj",
+        "projectUniqueName": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Controller\\Controller.csproj",
         "projectName": "Controller",
-        "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Controller\\Controller.csproj",
+        "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Controller\\Controller.csproj",
         "packagesPath": "C:\\Users\\lubbe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Controller\\obj\\",
+        "outputPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Controller\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lubbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -103,8 +103,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj": {
-                "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj"
+              "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj"
               }
             }
           }
@@ -135,18 +135,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj": {
+    "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj",
+        "projectUniqueName": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj",
+        "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj",
         "packagesPath": "C:\\Users\\lubbe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\obj\\",
+        "outputPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lubbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -190,18 +190,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\RaceBaan\\RaceBaan.csproj": {
+    "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\RaceBaan\\RaceBaan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\RaceBaan\\RaceBaan.csproj",
+        "projectUniqueName": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\RaceBaan\\RaceBaan.csproj",
         "projectName": "RaceBaan",
-        "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\RaceBaan\\RaceBaan.csproj",
+        "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\RaceBaan\\RaceBaan.csproj",
         "packagesPath": "C:\\Users\\lubbe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\RaceBaan\\obj\\",
+        "outputPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\RaceBaan\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lubbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -217,11 +217,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Controller\\Controller.csproj": {
-                "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Controller\\Controller.csproj"
+              "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Controller\\Controller.csproj": {
+                "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Controller\\Controller.csproj"
               },
-              "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj": {
-                "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race-Simulator\\Model\\Model.csproj"
+              "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\lubbe\\Documents\\GitHub\\Race Simulator\\Model\\Model.csproj"
               }
             }
           }
@@ -249,7 +249,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
