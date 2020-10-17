@@ -9,7 +9,6 @@ namespace RaceBaan
 {
     public static class Visualization
     {
-
         public static void Initialize()
         {
 
@@ -249,7 +248,6 @@ namespace RaceBaan
                 #endregion
             }
         }
-
 
         #region graphics  //5x5 full variaton write all variations
 
