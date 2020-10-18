@@ -14,6 +14,13 @@ namespace RaceBaan
 
         }
 
+        public static string Replace12withParticipants(String _string, IParticipant Iparticipant)
+        {
+
+
+            return "xd";
+        }
+
         public static void DrawSection(Section section) //add coordinates? //note the x and of every section in a different method to drawy later
         {
             //we have the coordinates, and the direction, and the type
