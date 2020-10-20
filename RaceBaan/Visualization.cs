@@ -14,15 +14,17 @@ namespace RaceBaan
 
         }
 
-        public static string Replace12withParticipants(String _string, IParticipant Iparticipant)
+        public static string DrawStartPositions(String _string, IParticipant iparticipant)
         {
+            //what is the purpose of the dictionairy?  how is it used?
 
 
-            return "xd";
+            return "test";
         }
 
         public static void DrawSection(Section section) //add coordinates? //note the x and of every section in a different method to drawy later
         {
+            
             //we have the coordinates, and the direction, and the type
 
             string[] wegstuk = new string[5];
@@ -63,11 +65,12 @@ namespace RaceBaan
 
             foreach(String line in wegstuk)
             {
-                Console.SetCursorPosition(section.X, section.Y);                        //gaat iets mis bij het plaatsen van de coordinaten`, hij word negatief terwijl dat niet zou moeten kunnen
+                Console.SetCursorPosition(section.X, section.Y);           //gaat iets mis bij het plaatsen van de coordinaten`, hij word negatief terwijl dat niet zou moeten kunnen
                 Console.Write(line);
                 section.Y += 1;
             }
             section.Y -= 5;
+            Console.SetCursorPosition(0, 0);
         }
         /*
                   * 1. find out how much the track "sticks out" this will give you an x and y value
@@ -206,12 +209,19 @@ namespace RaceBaan
         public static void DrawTrack(Track track, Direction startingdirection)
         {
             // mapping functie string[] GetSectionStringArray(SectionType ST, Direction) { switch(ST) case 1} 
+
             setDirections(track, startingdirection); //seems to be doing its job
             findOffsetXandY(track);                 //5 off
             setCoordinatesOfEachSection(track);
             foreach (Section section in track.Sections)
             {
+
+
+
                 DrawSection(section);
+
+
+
                 #region
                 /*
                 switch (section.SectionType)
@@ -253,6 +263,10 @@ namespace RaceBaan
                 }
                 */
                 #endregion
+
+
+
+
             }
         }
 

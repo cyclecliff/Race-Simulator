@@ -15,26 +15,22 @@ namespace Controller
         
         //   Dictionairy<Section, SectionData>
         //   <
-        //    (Object) Section     [X, Y, Type, Direction] // 
+        //    (Object) Section     [X, Y, Type, Direction] , 
         //    (Object) SectionData [IP Left, DistanceLeft, IP Right, DistanceRight] 
         //   >
 
-        //GetSectionData gives you the sectionData for a given section
+                    
         public SectionData GetSectionData(Section section) 
         {
-            SectionData value;
-
-            if (_positions.TryGetValue(section, out value)) //get the sectiondata object if it exists
+            if (_positions.ContainsKey(section))
             {
-                return value;
-
-            } else
-            {
-                _positions[section] = new SectionData(); // if it doesnt, create a new data object
-
-                return value;
+                return _positions[section];
             }
-            
+            else
+            {
+                _positions.Add(section, new SectionData());
+                return _positions[section];
+            }
         } 
 
         public Race(Track _track, List<IParticipant> _participants)

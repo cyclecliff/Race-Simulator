@@ -19,12 +19,15 @@ namespace Model
         public SectionData(IParticipant left)
         {
             Left  = left;
+            DistanceLeft = 0;
         }
 
         public SectionData(IParticipant left, IParticipant right)
         {
             Left  = left;
+            DistanceLeft = 0;
             Right = right;
+            DistanceRight = 0;
         }
 
         public static implicit operator SectionTypes(SectionData v)
