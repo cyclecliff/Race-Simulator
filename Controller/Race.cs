@@ -11,7 +11,7 @@ namespace Controller
         public  List<IParticipant> Participants;
         public  DateTime StartTime;
         private Random _random;
-        private Dictionary<Section, SectionData> _positions;
+        public  Dictionary<Section, SectionData> _positions;
         
         //   Dictionairy<Section, SectionData>
         //   <
