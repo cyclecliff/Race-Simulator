@@ -18,8 +18,10 @@ namespace RaceBaan
             Data.addTracks();
 
             //Data.NextRace();
-            Visualization.DrawTrack(Data.CurrentRace.track, Direction.Right);
+            Visualization.SetTrackData(Data.CurrentRace.track, Direction.Right);
             Data.CurrentRace.giveStartPositions(Data.CurrentRace.track, Data.CurrentRace.Participants);
+            Visualization.DrawTrack(Data.CurrentRace.track);
+            
 
 
 

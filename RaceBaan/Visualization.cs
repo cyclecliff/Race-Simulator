@@ -15,7 +15,7 @@ namespace RaceBaan
 
         }
 
-        public static string[] DrawPositions(String[] _string, SectionData sectiondata)
+        public static string DrawPositions(String _string, SectionData sectiondata)
         {
             //what is the purpose of the dictionairy?  how is it used?
 
@@ -24,35 +24,31 @@ namespace RaceBaan
             //1 problem. I dont know how to reach _positions from the method drawtrack
 
             //not the right way, its an idea, though \/
-
-            if(sectiondata.Left.Name == null)
+            if (_string.Contains("1") && sectiondata.Left != null)
             {
-                sectiondata.Left.Name = "";
+                _string = _string.Replace("1", (string)sectiondata.Left.Name);
+            }
+            else
+            {
+                _string = _string.Replace("1", " ");
             }
 
-            if(sectiondata.Right.Name == null)
+            if (_string.Contains("2") && sectiondata.Right != null)
             {
-                sectiondata.Right.Name = "";
+                _string = _string.Replace("2", (string)sectiondata.Right.Name);
             }
-
-
-            foreach(String line in _string)
+            else
             {
-                if (line.Contains("1"))
-                {
-                    line.Replace("1", sectiondata.Left.Name);
-                }
-                if (line.Contains("2"))
-                {
-                    line.Replace("2", sectiondata.Right.Name);
-                }
+                _string = _string.Replace("2", " ");
             }
 
             return _string;
 
         }
 
-        /*
+
+
+            /*
             * 1. find out how much the track "sticks out" this will give you an x and y value
             * 2. give each section coordinates with the previous values in mind
             * 3. print the sections in a method which uses just the coordinates of the sections themselves to write them down
@@ -62,63 +58,11 @@ namespace RaceBaan
             * 3.METHOD THAT SETS THE COORDINATES USING THE OFFSET
             * 4.METHOD THAT DRAWS THE SECTIONS USING THE DATA MENTIONED ABOVE
             * 5.METHOD THAT ENCAPSULATES THE PREVIOUS 4
-  */
-
-        public static void DrawSection(Section section) //add coordinates? //note the x and of every section in a different method to draw later
-        {
-            //we have the coordinates, and the direction, and the type
-
-            string[] wegstuk = new string[5];
-
-            SectionData sectiondata = Data.CurrentRace.GetSectionData(section);
+            */
 
 
-            switch (section.SectionType)
-            {
-                case SectionTypes.Straight                      :   
-                    if (section.Direction == Direction.Up)      { wegstuk = _Straight_Vertical_0;       }
-                    if (section.Direction == Direction.Right)   { wegstuk = _Straight_Horizontal_1;     }
-                    if (section.Direction == Direction.Down)    { wegstuk = _Straight_Vertical_2;       }
-                    if (section.Direction == Direction.Left)    { wegstuk = _Straight_Horizontal_3;     }
-                    break;
-                case SectionTypes.StartGrid                     :
-                    if (section.Direction == Direction.Up)      { wegstuk = _Start_Vertical_0;          }
-                    if (section.Direction == Direction.Right)   { wegstuk = _Start_Horizontal_1;        }
-                    if (section.Direction == Direction.Down)    { wegstuk = _Start_Vertical_2;          }
-                    if (section.Direction == Direction.Left)    { wegstuk = _Start_Horizontal_3;        }
-                    break;
-                case SectionTypes.Finish                        :
-                    if (section.Direction == Direction.Up)      { wegstuk = _Finish_Vertical_0;         }
-                    if (section.Direction == Direction.Right)   { wegstuk = _Finish_Horizontal_1;       }
-                    if (section.Direction == Direction.Down)    { wegstuk = _Finish_Vertical_2;         }
-                    if (section.Direction == Direction.Left)    { wegstuk = _Finish_Horizontal_3;       }
-                    break;
-                case SectionTypes.LeftCorner                    :
-                    if (section.Direction == Direction.Up)      { wegstuk = _LeftCorner_Vertical_0;     }
-                    if (section.Direction == Direction.Right)   { wegstuk = _LeftCorner_Horizontal_1;   }
-                    if (section.Direction == Direction.Down)    { wegstuk = _LeftCorner_Vertical_2;     }
-                    if (section.Direction == Direction.Left)    { wegstuk = _LeftCorner_Horizontal_3;   }
-                    break;
-                case SectionTypes.RightCorner                   :
-                    if (section.Direction == Direction.Up)      { wegstuk = _RightCorner_Vertical_0;    }
-                    if (section.Direction == Direction.Right)   { wegstuk = _RightCorner_Horizontal_1;  }
-                    if (section.Direction == Direction.Down)    { wegstuk = _RightCorner_Vertical_2;    }
-                    if (section.Direction == Direction.Left)    { wegstuk = _RightCorner_Horizontal_3;  }
-                    break;
-            }
 
-            DrawPositions(wegstuk, sectiondata);
-            
-            foreach(String line in wegstuk)
-            {
-                Console.SetCursorPosition(section.X, section.Y);           //gaat iets mis bij het plaatsen van de coordinaten`, hij word negatief terwijl dat niet zou moeten kunnen
-                Console.Write(line);
-                section.Y += 1;
-            }
-            section.Y -= 5;
 
-           // Console.SetCursorPosition(0, 0);
-        }
         public static void setDirections(Track track, Direction _startingdirection)
         {
             Direction direction = _startingdirection;        
@@ -238,24 +182,75 @@ namespace RaceBaan
                 }
             }
         }
-
-
-        public static void DrawTrack(Track track, Direction startingdirection)
+        public static void DrawSection(Section section) //add coordinates? //note the x and of every section in a different method to draw later
         {
-            // mapping functie string[] GetSectionStringArray(SectionType ST, Direction) { switch(ST) case 1} 
+            //we have the coordinates, and the direction, and the type
 
+            string[] wegstuk = new string[5];
+
+            SectionData sectiondata = Data.CurrentRace.GetSectionData(section);
+
+
+            switch (section.SectionType)
+            {
+                case SectionTypes.Straight:
+                    if (section.Direction == Direction.Up) { wegstuk = _Straight_Vertical_0; }
+                    if (section.Direction == Direction.Right) { wegstuk = _Straight_Horizontal_1; }
+                    if (section.Direction == Direction.Down) { wegstuk = _Straight_Vertical_2; }
+                    if (section.Direction == Direction.Left) { wegstuk = _Straight_Horizontal_3; }
+                    break;
+                case SectionTypes.StartGrid:
+                    if (section.Direction == Direction.Up) { wegstuk = _Start_Vertical_0; }
+                    if (section.Direction == Direction.Right) { wegstuk = _Start_Horizontal_1; }
+                    if (section.Direction == Direction.Down) { wegstuk = _Start_Vertical_2; }
+                    if (section.Direction == Direction.Left) { wegstuk = _Start_Horizontal_3; }
+                    break;
+                case SectionTypes.Finish:
+                    if (section.Direction == Direction.Up) { wegstuk = _Finish_Vertical_0; }
+                    if (section.Direction == Direction.Right) { wegstuk = _Finish_Horizontal_1; }
+                    if (section.Direction == Direction.Down) { wegstuk = _Finish_Vertical_2; }
+                    if (section.Direction == Direction.Left) { wegstuk = _Finish_Horizontal_3; }
+                    break;
+                case SectionTypes.LeftCorner:
+                    if (section.Direction == Direction.Up) { wegstuk = _LeftCorner_Vertical_0; }
+                    if (section.Direction == Direction.Right) { wegstuk = _LeftCorner_Horizontal_1; }
+                    if (section.Direction == Direction.Down) { wegstuk = _LeftCorner_Vertical_2; }
+                    if (section.Direction == Direction.Left) { wegstuk = _LeftCorner_Horizontal_3; }
+                    break;
+                case SectionTypes.RightCorner:
+                    if (section.Direction == Direction.Up) { wegstuk = _RightCorner_Vertical_0; }
+                    if (section.Direction == Direction.Right) { wegstuk = _RightCorner_Horizontal_1; }
+                    if (section.Direction == Direction.Down) { wegstuk = _RightCorner_Vertical_2; }
+                    if (section.Direction == Direction.Left) { wegstuk = _RightCorner_Horizontal_3; }
+                    break;
+            }
+
+           
+
+            foreach (String line in wegstuk)
+            {
+                
+                Console.SetCursorPosition(section.X, section.Y);           //gaat iets mis bij het plaatsen van de coordinaten`, hij word negatief terwijl dat niet zou moeten kunnen
+                Console.Write(DrawPositions(line, sectiondata));
+                section.Y += 1;
+            }
+            section.Y -= 5;
+
+            Console.SetCursorPosition(0, 0);
+        }
+        public static void SetTrackData(Track track, Direction startingdirection)
+        {
             setDirections(track, startingdirection); //seems to be doing its job
             findOffsetXandY(track);                 //5 off
             setCoordinatesOfEachSection(track);
+        }
+        public static void DrawTrack(Track track)
+        {
+            // mapping functie string[] GetSectionStringArray(SectionType ST, Direction) { switch(ST) case 1} 
+
             foreach (Section section in track.Sections)
             {
-
-
-
                 DrawSection(section);
-
-
-
                 #region
                 /*
                 switch (section.SectionType)
@@ -297,13 +292,8 @@ namespace RaceBaan
                 }
                 */
                 #endregion
-
-
-
-
             }
         }
-
         #region graphics  //5x5 full variaton write all variations
 
 

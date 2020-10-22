@@ -30,12 +30,12 @@
             Driver participant1 = new Driver("A", TeamColors.Blue);     //klopt dit?
             Driver participant2 = new Driver("B", TeamColors.Green);
             Driver participant3 = new Driver("C", TeamColors.Grey);
-          //  Driver participant4 = new Driver("D", TeamColors.Red);
+            Driver participant4 = new Driver("D", TeamColors.Red);
 
            Competition.Participants.Add(participant1);
            Competition.Participants.Add(participant2);
            Competition.Participants.Add(participant3);
-          // Competition.Participants.Add(participant4);
+           Competition.Participants.Add(participant4);
         }
 
         public static void addTracks()
