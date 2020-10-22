@@ -293,6 +293,7 @@ namespace RaceBaan
                 */
                 #endregion
             }
+          //  Console.WriteLine(Data.CurrentRace.track.Name);
         }
         #region graphics  //5x5 full variaton write all variations
 

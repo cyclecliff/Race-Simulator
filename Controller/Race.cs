@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using System.Timers;
 
 namespace Controller
 {
@@ -12,14 +14,16 @@ namespace Controller
         public  DateTime StartTime;
         private Random _random;
         public  Dictionary<Section, SectionData> _positions;
-        
+        private System.Timers.Timer timer;
+
+       
         //   Dictionairy<Section, SectionData>
         //   <
         //    (Object) Section     [X, Y, Type, Direction] , 
         //    (Object) SectionData [IP Left, DistanceLeft, IP Right, DistanceRight] 
         //   >
 
-                    
+
         public SectionData GetSectionData(Section section) 
         {
             if (_positions.ContainsKey(section))
@@ -38,11 +42,31 @@ namespace Controller
             track           = _track;
             Participants    = _participants;
             _random         = new Random(DateTime.Now.Millisecond);
-
             _positions      = new Dictionary<Section, SectionData>();
+            giveStartPositions(_track, _participants);
+            SetTimer();
             
-        }              
+        }
 
+        private void SetTimer()
+        {
+            // Create a timer with a two second interval.
+            timer = new System.Timers.Timer(500);
+            // Hook up the Elapsed event for the timer. 
+            timer.Elapsed += OnTimedEvent;
+            timer.AutoReset = true;
+            //timer.Enabled = true;
+        }
+
+        private void Start()
+        {
+            timer.Enabled = true;
+        }
+        private static void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
+                              e.SignalTime);
+        }
         public void giveStartPositions(Track track, List<IParticipant> participants)
         {
             Queue<Section>      starts     = new Queue<Section>();
@@ -87,7 +111,6 @@ namespace Controller
              * 
              */
         }
-
         public void RandomizeEquipment(List<IParticipant> _participants)     
         {
             foreach(IParticipant participant in _participants)
@@ -96,6 +119,5 @@ namespace Controller
                 participant.Equipment.Performance   = _random.Next();
             }   
         }
-
     }
 }

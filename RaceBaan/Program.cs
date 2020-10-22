@@ -14,12 +14,12 @@ namespace RaceBaan
             Data.Initialize();
             Data.NextRace();
            //Console.WriteLine(Data.CurrentRace.track.Name);
+            //Data.NextRace();
 
             Data.addTracks();
 
-            //Data.NextRace();
             Visualization.SetTrackData(Data.CurrentRace.track, Direction.Right);
-            Data.CurrentRace.giveStartPositions(Data.CurrentRace.track, Data.CurrentRace.Participants);
+            //Data.CurrentRace.giveStartPositions(Data.CurrentRace.track, Data.CurrentRace.Participants);
             Visualization.DrawTrack(Data.CurrentRace.track);
             
 
