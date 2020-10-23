@@ -16,6 +16,7 @@ namespace Controller
         public  Dictionary<Section, SectionData> _positions;
         private System.Timers.Timer timer;
 
+        public  event EventHandler DriversChanged;
        
         //   Dictionairy<Section, SectionData>
         //   <
@@ -57,11 +58,16 @@ namespace Controller
             timer.AutoReset = true;
             //timer.Enabled = true;
         }
-
         private void Start()
         {
             timer.Enabled = true;
         }
+        public virtual void OnDriversChanged(DriversChangedEventArgs d)
+        {
+            EventHandler handler = DriversChanged;
+            handler?.Invoke(this, d);
+        }
+
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
