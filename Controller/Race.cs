@@ -16,8 +16,9 @@ namespace Controller
         public  Dictionary<Section, SectionData> _positions;
         private System.Timers.Timer timer;
 
-        public  event EventHandler DriversChanged;
-       
+        public event EventHandler DriversChanged;
+        
+        
         //   Dictionairy<Section, SectionData>
         //   <
         //    (Object) Section     [X, Y, Type, Direction] , 
@@ -46,7 +47,7 @@ namespace Controller
             _positions      = new Dictionary<Section, SectionData>();
             giveStartPositions(_track, _participants);
             SetTimer();
-            
+                      //trying to subscribe the driverschanged event to the event handler OnDriversChanged
         }
 
         private void SetTimer()
@@ -62,11 +63,7 @@ namespace Controller
         {
             timer.Enabled = true;
         }
-        public virtual void OnDriversChanged(DriversChangedEventArgs d)
-        {
-            EventHandler handler = DriversChanged;
-            handler?.Invoke(this, d);
-        }
+        
 
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
