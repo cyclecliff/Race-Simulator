@@ -12,6 +12,7 @@
             Competition = new Competition();
             addParticipants();
             addTracks();
+            
         }
 
 
@@ -22,6 +23,7 @@
             {
                 CurrentRace = new Race(t, Competition.Participants);
             }
+            
         }
 
 

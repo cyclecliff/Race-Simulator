@@ -47,8 +47,16 @@ namespace Controller
             _positions      = new Dictionary<Section, SectionData>();
             giveStartPositions(_track, _participants);
             SetTimer();
-                      //trying to subscribe the driverschanged event to the event handler OnDriversChanged
+            RandomizeEquipment(_participants);
+            //trying to subscribe the driverschanged event to the event handler OnDriversChanged
         }
+
+        public int travelDistance(Driver d)
+        {
+            return 0;
+        }
+
+        //at every timed event, move the racers
 
         private void SetTimer()
         {
@@ -57,7 +65,7 @@ namespace Controller
             // Hook up the Elapsed event for the timer. 
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
-            //timer.Enabled = true;
+            timer.Enabled = true;
         }
         private void Start()
         {
@@ -67,8 +75,7 @@ namespace Controller
 
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
-                              e.SignalTime);
+            Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}", e.SignalTime);
         }
         public void giveStartPositions(Track track, List<IParticipant> participants)
         {
@@ -120,6 +127,7 @@ namespace Controller
             {
                 participant.Equipment.Quality       = _random.Next();
                 participant.Equipment.Performance   = _random.Next();
+                participant.Equipment.Speed         = 40;
             }   
         }
     }

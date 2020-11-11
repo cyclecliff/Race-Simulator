@@ -8,7 +8,7 @@ using System.Text;
 
 namespace RaceBaan
 {
-    public class Visualization
+    public static class Visualization //used to be static
     {
         public static void Initialize()
         {
@@ -61,9 +61,10 @@ namespace RaceBaan
         */
 
 
-        public virtual void OnDriversChanged(DriversChangedEventArgs d)
+        public static void OnDriversChanged(object o, EventArgs d)
         {
-            DrawTrack(d.track);
+
+            DrawTrack(((DriversChangedEventArgs)d).track); //casten werkt
         }
 
         public static void setDirections(Track track, Direction _startingdirection)
