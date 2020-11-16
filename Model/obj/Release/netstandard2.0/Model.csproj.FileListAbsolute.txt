@@ -1,9 +1,0 @@
-C:\Users\lubbe\Documents\GitHub\Race-Simulator\Model\bin\Release\netstandard2.0\Model.deps.json
-C:\Users\lubbe\Documents\GitHub\Race-Simulator\Model\bin\Release\netstandard2.0\Model.dll
-C:\Users\lubbe\Documents\GitHub\Race-Simulator\Model\bin\Release\netstandard2.0\Model.pdb
-C:\Users\lubbe\Documents\GitHub\Race-Simulator\Model\obj\Release\netstandard2.0\Model.csprojAssemblyReference.cache
-C:\Users\lubbe\Documents\GitHub\Race-Simulator\Model\obj\Release\netstandard2.0\Model.AssemblyInfoInputs.cache
-C:\Users\lubbe\Documents\GitHub\Race-Simulator\Model\obj\Release\netstandard2.0\Model.AssemblyInfo.cs
-C:\Users\lubbe\Documents\GitHub\Race-Simulator\Model\obj\Release\netstandard2.0\Model.csproj.CoreCompileInputs.cache
-C:\Users\lubbe\Documents\GitHub\Race-Simulator\Model\obj\Release\netstandard2.0\Model.dll
-C:\Users\lubbe\Documents\GitHub\Race-Simulator\Model\obj\Release\netstandard2.0\Model.pdb
