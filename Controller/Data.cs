@@ -26,7 +26,6 @@
             
         }
 
-
         public static void addParticipants()
         {
             Driver participant1 = new Driver("A", TeamColors.Blue);     //klopt dit?

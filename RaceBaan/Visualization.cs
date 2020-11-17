@@ -8,11 +8,11 @@ using System.Text;
 
 namespace RaceBaan
 {
-    public static class Visualization //used to be static
+    public static class Visualization 
     {
         public static void Initialize()
         {
-
+         
         }
 
         public static string DrawPositions(String _string, SectionData sectiondata)
@@ -26,7 +26,7 @@ namespace RaceBaan
             //not the right way, its an idea, though \/
             if (_string.Contains("1") && sectiondata.Left != null)
             {
-                _string = _string.Replace("1", (string)sectiondata.Left.Name);
+                _string = _string.Replace("1", sectiondata.Left.Name);
             }
             else
             {
@@ -35,7 +35,7 @@ namespace RaceBaan
 
             if (_string.Contains("2") && sectiondata.Right != null)
             {
-                _string = _string.Replace("2", (string)sectiondata.Right.Name);
+                _string = _string.Replace("2", sectiondata.Right.Name);
             }
             else
             {
@@ -60,12 +60,12 @@ namespace RaceBaan
         * 5.METHOD THAT ENCAPSULATES THE PREVIOUS 4
         */
 
-
         public static void OnDriversChanged(object o, EventArgs d)
         {
-
             DrawTrack(((DriversChangedEventArgs)d).track); //casten werkt
         }
+
+        
 
         public static void setDirections(Track track, Direction _startingdirection)
         {

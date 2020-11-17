@@ -46,24 +46,25 @@ namespace Controller
             _random         = new Random(DateTime.Now.Millisecond);
             _positions      = new Dictionary<Section, SectionData>();
             giveStartPositions(_track, _participants);
-            SetTimer();
             RandomizeEquipment(_participants);
+            SetTimer();
             //trying to subscribe the driverschanged event to the event handler OnDriversChanged
         }
 
-        public int travelDistance(Driver d)
+        public int getTravelDistanceOfDriver(Driver d)
         {
-            return 0;
+            return d.Equipment.Performance * d.Equipment.Speed;
         }
 
         //at every timed event, move the racers
 
         private void SetTimer()
         {
-            // Create a timer with a two second interval.
+            // Create a timer with half second interval.
             timer = new System.Timers.Timer(500);
             // Hook up the Elapsed event for the timer. 
-            timer.Elapsed += OnTimedEvent;
+            timer.Elapsed += OnTimedEvent; //should be on driverschanged
+        //  timer.Elapsed += OnDriversChanged;
             timer.AutoReset = true;
             timer.Enabled = true;
         }
@@ -72,11 +73,12 @@ namespace Controller
             timer.Enabled = true;
         }
         
-
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}", e.SignalTime);
+            Console.WriteLine("DriversChanged at {0:HH:mm:ss.fff}", e.SignalTime);
         }
+
+
         public void giveStartPositions(Track track, List<IParticipant> participants)
         {
             Queue<Section>      starts     = new Queue<Section>();
@@ -106,9 +108,9 @@ namespace Controller
                 }
             } else
             {
-                while(i < (participants.Count-1)) // right now assumes that the number of players is perfectly proportional to the amount of startgrids
+                while(i < (participants.Count-1)) 
                 {
-                    _positions.Add(starts.Dequeue(), new SectionData(participants[i], participants[i + 1])); //rn the number of drivers can only be even      
+                    _positions.Add(starts.Dequeue(), new SectionData(participants[i], participants[i + 1]));   //uneven fix
                     i += 2;
                 }
                     _positions.Add(starts.Dequeue(), new SectionData(participants[i]));
@@ -123,12 +125,12 @@ namespace Controller
         }
         public void RandomizeEquipment(List<IParticipant> _participants)     
         {
-            foreach(IParticipant participant in _participants)
+            foreach(IParticipant ptcpnt in _participants)
             {
-                participant.Equipment.Quality       = _random.Next();
-                participant.Equipment.Performance   = _random.Next();
-                participant.Equipment.Speed         = 40;
-            }   
+                //ptcpnt.Equipment.Performance       = _random.Next();
+                // ptcpnt.Equipment.Performance   = _random.Next();
+                // ptcpnt.Equipment.Speed         = 40;
+            }
         }
     }
 }

@@ -18,8 +18,8 @@ namespace Model
             Name      = _name;
             Points    = 0;
             TeamColor = _teamcolor;
+            
           // Equipment.Speed;
         }
-
     }
 }

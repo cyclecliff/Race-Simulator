@@ -10,8 +10,5 @@ namespace Model
         int Points              { get; set; }
         IEquipment Equipment    { get; set; }
         TeamColors TeamColor    { get; set; }
-
-
-
     }
 }
