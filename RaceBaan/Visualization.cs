@@ -8,11 +8,14 @@ using System.Text;
 
 namespace RaceBaan
 {
-    public static class Visualization 
+    public static  class Visualization 
     {
+       
+
+
         public static void Initialize()
         {
-         
+          
         }
 
         public static string DrawPositions(String _string, SectionData sectiondata)
@@ -48,21 +51,11 @@ namespace RaceBaan
 
 
 
-        /*
-        * 1. find out how much the track "sticks out" this will give you an x and y value
-        * 2. give each section coordinates with the previous values in mind
-        * 3. print the sections in a method which uses just the coordinates of the sections themselves to write them down
-        * 
-        * 1.METHOD THAT SETS THE DIRECTIONS
-        * 2.METHOD THAT FINDS THE OFFSET
-        * 3.METHOD THAT SETS THE COORDINATES USING THE OFFSET
-        * 4.METHOD THAT DRAWS THE SECTIONS USING THE DATA MENTIONED ABOVE
-        * 5.METHOD THAT ENCAPSULATES THE PREVIOUS 4
-        */
+       
 
-        public static void OnDriversChanged(object o, EventArgs d)
+        public static void OnDriversChanged(object o, DriversChangedEventArgs d)
         {
-            DrawTrack(((DriversChangedEventArgs)d).track); //casten werkt
+            DrawTrack(d.track); //casten werkt
         }
 
         

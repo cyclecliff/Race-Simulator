@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Timers;
@@ -15,16 +16,12 @@ namespace Controller
         private Random _random;
         public  Dictionary<Section, SectionData> _positions;
         private System.Timers.Timer timer;
+       // public delegate EventHandler DriversChanged(object sender, DriversChangedEventArgs d);
+      
 
-        public event EventHandler DriversChanged;
-        
-        
-        //   Dictionairy<Section, SectionData>
-        //   <
-        //    (Object) Section     [X, Y, Type, Direction] , 
-        //    (Object) SectionData [IP Left, DistanceLeft, IP Right, DistanceRight] 
-        //   >
+        public delegate void DriversChanged(object sender, DriversChangedEventArgs d);
 
+        public event DriversChanged Drivers_Changed;
 
         public SectionData GetSectionData(Section section) 
         {
@@ -64,19 +61,81 @@ namespace Controller
             timer = new System.Timers.Timer(500);
             // Hook up the Elapsed event for the timer. 
             timer.Elapsed += OnTimedEvent; //should be on driverschanged
-        //  timer.Elapsed += OnDriversChanged;
+            
+            //timer.Elapsed += OnDriversChanged;
             timer.AutoReset = true;
             timer.Enabled = true;
         }
-        private void Start()
+
+       
+        public  virtual void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            timer.Enabled = true;
+            //Console.WriteLine("DriversChanged at {0:HH:mm:ss.fff}", e.SignalTime);
+
+            foreach (Section section in track.Sections)
+            {
+                SectionData data = GetSectionData(section);
+                
+                if (data.Left != null)
+                {
+                    int leftDistance = data.DistanceLeft + getTravelDistanceOfDriver((Driver)data.Left); //berekent te reizen afstand. works
+
+                    if (leftDistance > 100)
+                    {
+                        for (int i = 0; i < _positions.Count; i++)
+                        {
+                            if (_positions.ElementAt(i).Value.Left == data.Left) //if the left contains the participant im looking for
+                            {
+                                var MovingDriver = _positions.ElementAt(i).Value.Left; //drivers is not "picked up"
+                                data.Left = null;
+                                data.DistanceLeft = 0;
+                                if(i == _positions.Count - 1) //is hij aan het "einde" van de track
+                                {
+                                    _positions.ElementAt(0).Value.Left = MovingDriver;
+                                    _positions.ElementAt(0).Value.DistanceLeft = leftDistance - 100;
+                                }
+                                else
+                                {
+                                    _positions.ElementAt(i + 1).Value.Left         = MovingDriver;
+                                    _positions.ElementAt(i + 1).Value.DistanceLeft = leftDistance - 100;
+                                }
+
+                               
+                                //positions.Remove(participant)
+                                //positions.ElementAt(i).Value.Left == null; ;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        data.DistanceLeft += leftDistance;
+                    }
+                }
+
+                if (data.Right != null)
+                {
+
+                }
+            }
+            Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track));
+           //ondriverschanged
         }
-        
-        private static void OnTimedEvent(Object source, ElapsedEventArgs e)
+
+        //   Dictionairy<Section, SectionData>
+        //   <
+        //    (Object) Section     [X, Y, Type, Direction] , 
+        //    (Object) SectionData [IP Left, DistanceLeft, IP Right, DistanceRight] 
+        //   >
+
+        public virtual void MoveDrivers(Track track) //breedte van een sectie is 100
         {
-            Console.WriteLine("DriversChanged at {0:HH:mm:ss.fff}", e.SignalTime);
+            //Console.WriteLine("drivers were moved"); works
+
+            
         }
+
+       
+       
 
 
         public void giveStartPositions(Track track, List<IParticipant> participants)
@@ -127,9 +186,9 @@ namespace Controller
         {
             foreach(IParticipant ptcpnt in _participants)
             {
-                //ptcpnt.Equipment.Performance       = _random.Next();
-                // ptcpnt.Equipment.Performance   = _random.Next();
-                // ptcpnt.Equipment.Speed         = 40;
+                 ptcpnt.Equipment.Quality       = _random.Next(1, 5);
+                 ptcpnt.Equipment.Performance   = _random.Next(1, 5);
+                 ptcpnt.Equipment.Speed         = 40;
             }
         }
     }

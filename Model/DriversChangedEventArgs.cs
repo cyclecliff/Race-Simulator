@@ -6,7 +6,12 @@ namespace Model
 {
     public class DriversChangedEventArgs : EventArgs
     {
-        public Track track;
+        public Track track { get; set; }
+
+        public DriversChangedEventArgs(Track _track)
+        {
+            track = _track;
+        }
 
     }
 }

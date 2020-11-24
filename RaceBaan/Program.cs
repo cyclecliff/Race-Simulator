@@ -14,7 +14,7 @@ namespace RaceBaan
             
             Data.Initialize();
             Data.NextRace();
-            Data.CurrentRace.DriversChanged += Visualization.OnDriversChanged;
+            Data.CurrentRace.Drivers_Changed += Visualization.OnDriversChanged;
            //Console.WriteLine(Data.CurrentRace.track.Name);
             //Data.NextRace();
 
