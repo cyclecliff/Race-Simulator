@@ -18,8 +18,9 @@
 
         public static void NextRace()
         {
+
             Track t = Competition.NextTrack();
-            if(!(t == null))
+            if(t != null)
             {
                 CurrentRace = new Race(t, Competition.Participants);
             }
@@ -43,8 +44,7 @@
         {
             //probably need to rework this later
            
-            Track track1 = new Track("H-Vorm 3x3", new[] {  SectionTypes.StartGrid,
-                                                            SectionTypes.StartGrid,
+            Track track1 = new Track("H-Vorm 3x3", new[] {  
                                                             SectionTypes.Finish,
                                                             SectionTypes.RightCorner,
                                                             SectionTypes.Straight,
@@ -71,9 +71,10 @@
                                                             SectionTypes.Straight,
                                                             SectionTypes.RightCorner,
                                                             SectionTypes.Straight,
+                                                            SectionTypes.StartGrid,
+                                                            SectionTypes.StartGrid,
             }); //revamped
-            Track track2 = new Track("O-Vorm 3x3", new[] {  SectionTypes.StartGrid,
-                                                            SectionTypes.StartGrid,
+            Track track2 = new Track("O-Vorm 3x3", new[] {  
                                                             SectionTypes.Finish,
                                                             SectionTypes.RightCorner,
                                                             SectionTypes.Straight,
@@ -83,15 +84,18 @@
                                                             SectionTypes.Straight,
                                                             SectionTypes.Straight,
                                                             SectionTypes.Straight,
+                                                            SectionTypes.Straight,
                                                             SectionTypes.RightCorner,
                                                             SectionTypes.Straight,
                                                             SectionTypes.Straight,
                                                             SectionTypes.Straight,
-                                                            SectionTypes.RightCorner
+                                                            SectionTypes.RightCorner,
+                                                            SectionTypes.StartGrid,
+                                                            SectionTypes.StartGrid,
+                                                            SectionTypes.StartGrid,
 
             }); //revamped
-            Track track3 = new Track("L-Vorm 3x3", new[] {  SectionTypes.StartGrid,
-                                                            SectionTypes.StartGrid,
+            Track track3 = new Track("L-Vorm 3x3", new[] {  
                                                             SectionTypes.Finish,
                                                             SectionTypes.RightCorner,
                                                             SectionTypes.Straight,
@@ -109,7 +113,9 @@
                                                             SectionTypes.Straight,
                                                             SectionTypes.RightCorner,
                                                             SectionTypes.Straight,
-                                                            SectionTypes.Straight
+                                                            SectionTypes.Straight,
+                                                            SectionTypes.StartGrid,
+                                                            SectionTypes.StartGrid,
             }); //revamped
 
             #region //addomtesttracks 

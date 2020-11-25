@@ -233,7 +233,7 @@ namespace RaceBaan
             }
             section.Y -= 5;
 
-            Console.SetCursorPosition(0, 0);
+           // Console.SetCursorPosition(0, 0);
         }
         public static void SetTrackData(Track track, Direction startingdirection)
         {
@@ -290,7 +290,8 @@ namespace RaceBaan
                 */
                 #endregion
             }
-          //  Console.WriteLine(Data.CurrentRace.track.Name);
+            //Console.SetCursorPosition(0, 0);
+            //Console.WriteLine(Data.CurrentRace.track.Name);
         }
         #region graphics  //5x5 full variaton write all variations
 
