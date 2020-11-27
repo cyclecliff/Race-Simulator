@@ -31,10 +31,5 @@ namespace Model
 
             return linkedListSection;
         }
-
-        
-
-        
-
     }
 }

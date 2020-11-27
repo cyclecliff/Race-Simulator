@@ -277,46 +277,32 @@ namespace Controller
        
 
 
-        public void giveStartPositions(Track track, List<IParticipant> participants)
-            //refactor so that the finish is the first section in the _positions list
+        public void giveStartPositions(Track track, List<IParticipant> participants)//refactor so that the finish is the first section in the _positions list
         {
+            Queue<IParticipant> participantz = new Queue<IParticipant>(participants);
+
             foreach (Section section in track.Sections) 
             {
-
-                if(section.SectionType == SectionTypes.StartGrid)
+                if (section.SectionType == SectionTypes.StartGrid)  //3 startgrids
                 {
-                    int i = 0;
-
-                    if((participants.Count % 2) == 0) //amount of participants even or uneven
+                    if (participantz.Count >= 2)
                     {
-                       while(i < participants.Count) // right now assumes that the number of players is perfectly proportional to the amount of startgrids
-                       {
-                           _positions.Add(section, new SectionData(participants[i], participants[i+1])); //rn the number of drivers can only be even      
-                           i += 2; //wants to add parts to the same section
-                       }
-                    } else
-                    {
-                        while(i < (participants.Count-1)) 
-                        {
-                           _positions.Add(section, new SectionData(participants[i], participants[i + 1]));   //uneven fix
-                           i += 2;
-                        }
-                         _positions.Add(section, new SectionData(participants[i]));
-                    }
+                        _positions.Add(section, new SectionData(participantz.Dequeue(), participantz.Dequeue())); //rn the number of drivers can only be even      
                     
+                    } else if (participantz.Count == 1)
+                    {
+                        _positions.Add(section, new SectionData(participantz.Dequeue()));
+                    }
+
                 } else
                 {
-                    _positions.Add(section, new SectionData());
+                        _positions.Add(section, new SectionData());
                 }
-               
                 //if(section.SectionType != SectionTypes.StartGrid)
                 //{
                 //    break;
                 //}
-
             } //loops through this foreach an unnessasery amount of times, should stop after the last startgrid
-
-            
             /*
              * can only be placed at a startgrid
              * per startgrid 2 participants

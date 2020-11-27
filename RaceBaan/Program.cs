@@ -22,7 +22,7 @@ namespace RaceBaan
 
             Data.addTracks();
 
-            Visualization.SetTrackData(Data.CurrentRace.track, Direction.Right);
+            Visualization.SetTrackData(Data.CurrentRace.track, Direction.Down);
             //Data.CurrentRace.giveStartPositions(Data.CurrentRace.track, Data.CurrentRace.Participants);
            //Visualization.DrawTrack(Data.CurrentRace.track);
             
