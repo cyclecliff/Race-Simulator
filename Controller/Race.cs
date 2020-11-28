@@ -16,6 +16,7 @@ namespace Controller
         private Random _random;
         public Dictionary<Section, SectionData> _positions;
         private System.Timers.Timer timer;
+        public int LapsAmount;
         // public delegate EventHandler DriversChanged(object sender, DriversChangedEventArgs d);
 
 
@@ -39,6 +40,7 @@ namespace Controller
         public Race(Track _track, List<IParticipant> _participants)
         {
             track = _track;
+            LapsAmount = 2;
             Participants = _participants;
             _random = new Random(DateTime.Now.Millisecond);
             _positions = new Dictionary<Section, SectionData>();
@@ -92,20 +94,36 @@ namespace Controller
                                     if (_positions.ElementAt(0).Value.Left == null)         //kan ik vooruit (naar het begin)
                                     {
                                         MovingDriver.LapsCompleted++;
-                                        _positions.ElementAt(0).Value.Left = MovingDriver;
-                                        _positions.ElementAt(0).Value.DistanceLeft = leftDistance - 200;
-                                        data.DistanceLeft = 0;
-                                        data.Left = null;
+                                        if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
+                                        {
+                                            data.DistanceLeft = 0;
+                                            data.Left = null;
+                                        }
+                                        else
+                                        {
+                                            _positions.ElementAt(0).Value.Left = MovingDriver;
+                                            _positions.ElementAt(0).Value.DistanceLeft = leftDistance - 200;
+                                            data.DistanceLeft = 0;
+                                            data.Left = null;
+                                        }
                                         Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                         break;
                                     }
                                     else if (_positions.ElementAt(0).Value.Right == null)    //kan ik van baan wisselen (naar het begin)
                                     {
                                         MovingDriver.LapsCompleted++;
-                                        _positions.ElementAt(0).Value.Right = MovingDriver;
-                                        _positions.ElementAt(0).Value.DistanceRight = leftDistance - 200;
-                                        data.DistanceLeft = 0;
-                                        data.Left = null;
+                                        if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
+                                        {
+                                            data.DistanceLeft = 0;
+                                            data.Left = null;
+                                        }
+                                        else
+                                        {
+                                            _positions.ElementAt(0).Value.Right = MovingDriver;
+                                            _positions.ElementAt(0).Value.DistanceRight = leftDistance - 200;
+                                            data.DistanceLeft = 0;
+                                            data.Left = null;
+                                        }
                                         Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                         break;
                                     }
@@ -169,20 +187,36 @@ namespace Controller
                                     if (_positions.ElementAt(0).Value.Right == null)         //kan ik vooruit (naar het begin)
                                     {
                                         MovingDriver.LapsCompleted++;
-                                        _positions.ElementAt(0).Value.Right = MovingDriver;
-                                        _positions.ElementAt(0).Value.DistanceRight = rightDistance - 200;
-                                        data.DistanceRight = 0;
-                                        data.Right = null;
+                                        if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
+                                        {
+                                            data.DistanceRight = 0;
+                                            data.Right = null;
+                                        }
+                                        else
+                                        {
+                                            _positions.ElementAt(0).Value.Right = MovingDriver;
+                                            _positions.ElementAt(0).Value.DistanceRight = rightDistance - 200;
+                                            data.DistanceRight = 0;
+                                            data.Right = null;
+                                        }
                                         Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                         break;
                                     }
                                     else if (_positions.ElementAt(0).Value.Left == null)    //kan ik van baan wisselen (naar het begin)
                                     {
                                         MovingDriver.LapsCompleted++;
-                                        _positions.ElementAt(0).Value.Left = MovingDriver;
-                                        _positions.ElementAt(0).Value.DistanceLeft = rightDistance - 200;
-                                        data.DistanceRight = 0;
-                                        data.Right = null;
+                                        if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
+                                        {
+                                            data.DistanceRight = 0;
+                                            data.Right = null;
+                                        }
+                                        else
+                                        {
+                                            _positions.ElementAt(0).Value.Left = MovingDriver;
+                                            _positions.ElementAt(0).Value.DistanceLeft = rightDistance - 200;
+                                            data.DistanceRight = 0;
+                                            data.Right = null;
+                                        }
                                         Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                         break;
                                     }
