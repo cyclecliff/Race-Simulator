@@ -40,14 +40,20 @@ namespace Controller
         public Race(Track _track, List<IParticipant> _participants)
         {
             track = _track;
-            LapsAmount = 2;
+            LapsAmount = 3;
             Participants = _participants;
             _random = new Random(DateTime.Now.Millisecond);
             _positions = new Dictionary<Section, SectionData>();
             giveStartPositions(_track, _participants);
             RandomizeEquipment(_participants);
             SetTimer();
+            
             //trying to subscribe the driverschanged event to the event handler OnDriversChanged
+        }
+
+        public void Cleanup()
+        {
+           // Drivers_Changed -= OnDriversChanged;
         }
 
         public int getTravelDistanceOfDriver(Driver d)
@@ -68,6 +74,14 @@ namespace Controller
             timer.Enabled = true;
         }
 
+        public int y = 0;
+        public void LapCompletedTest(IParticipant driver)
+        {
+            driver.LapsCompleted++;
+            Console.SetCursorPosition(40, y);
+            Console.Write($"Driver {driver.Name} has completed a lap. Lap nr: {driver.LapsCompleted}"); //program seems to go back in time and change the lapscompleted of a driver. (multithreading issue?)
+            y++;
+        }
 
         public virtual void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
@@ -93,7 +107,8 @@ namespace Controller
                                 {
                                     if (_positions.ElementAt(0).Value.Left == null)         //kan ik vooruit (naar het begin)
                                     {
-                                        MovingDriver.LapsCompleted++;
+                                        //MovingDriver.LapsCompleted++;
+                                        LapCompletedTest(MovingDriver);
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
                                         {
                                             data.DistanceLeft = 0;
@@ -111,7 +126,7 @@ namespace Controller
                                     }
                                     else if (_positions.ElementAt(0).Value.Right == null)    //kan ik van baan wisselen (naar het begin)
                                     {
-                                        MovingDriver.LapsCompleted++;
+                                        LapCompletedTest(MovingDriver);
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
                                         {
                                             data.DistanceLeft = 0;
@@ -186,7 +201,7 @@ namespace Controller
                                 {
                                     if (_positions.ElementAt(0).Value.Right == null)         //kan ik vooruit (naar het begin)
                                     {
-                                        MovingDriver.LapsCompleted++;
+                                        LapCompletedTest(MovingDriver);
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
                                         {
                                             data.DistanceRight = 0;
@@ -204,7 +219,7 @@ namespace Controller
                                     }
                                     else if (_positions.ElementAt(0).Value.Left == null)    //kan ik van baan wisselen (naar het begin)
                                     {
-                                        MovingDriver.LapsCompleted++;
+                                        LapCompletedTest(MovingDriver);
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
                                         {
                                             data.DistanceRight = 0;

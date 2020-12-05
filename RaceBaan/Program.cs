@@ -12,26 +12,27 @@ namespace RaceBaan
         static void Main(string[] args)
         { 
             
+            Console.CursorVisible = false;
             Data.Initialize();
             Data.NextRace();
-            Data.NextRace();
+            //Data.NextRace();
+            //Data.NextRace();
             Data.CurrentRace.Drivers_Changed += Visualization.OnDriversChanged;
-            Console.CursorVisible = false;
             //Console.WriteLine(Data.CurrentRace.track.Name);
             //Data.NextRace();
 
-            Data.addTracks();
+            //Data.addTracks();
 
             Visualization.SetTrackData(Data.CurrentRace.track, Direction.Right);
             //Data.CurrentRace.giveStartPositions(Data.CurrentRace.track, Data.CurrentRace.Participants);
-           //Visualization.DrawTrack(Data.CurrentRace.track);
+            Visualization.DrawTrack(Data.CurrentRace.track);
             
             //Visualization.SetTrackData(Data.CurrentRace.track, Direction.Right);
             //Data.CurrentRace.giveStartPositions(Data.CurrentRace.track, Data.CurrentRace.Participants);
             //Visualization.DrawTrack(Data.CurrentRace.track);
             for (; ; )
             {
-                Thread.Sleep(100);
+                Thread.Sleep(600);
             }
 
 
