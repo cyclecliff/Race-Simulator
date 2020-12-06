@@ -40,7 +40,7 @@ namespace Controller
         public Race(Track _track, List<IParticipant> _participants)
         {
             track = _track;
-            LapsAmount = 3;
+            LapsAmount = 0;
             Participants = _participants;
             _random = new Random(DateTime.Now.Millisecond);
             _positions = new Dictionary<Section, SectionData>();
@@ -51,9 +51,13 @@ namespace Controller
             //trying to subscribe the driverschanged event to the event handler OnDriversChanged
         }
 
-        public void Cleanup()
+        public void CleanupDelegates()
         {
            // Drivers_Changed -= OnDriversChanged;
+           foreach(DriversChanged d in Drivers_Changed.GetInvocationList())
+           {
+                Drivers_Changed -= d;
+           }
         }
 
         public int getTravelDistanceOfDriver(Driver d)
@@ -83,10 +87,24 @@ namespace Controller
             y++;
         }
 
+        public bool RaceEnded_LapsCompleted(Track track)
+        {
+            bool RaceEnded = false;
+            //another way, each time a participant gets deleted, change a counter, when the counter equals zero, the race stops
+
+            foreach(Section section in track.Sections)
+            {
+                SectionData data = GetSectionData(section);
+
+                RaceEnded = (data == null) ? true : false;
+            }
+            return RaceEnded;
+        }
+
         public virtual void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             timer.Stop();
-            //Console.WriteLine("DriversChanged at {0:HH:mm:ss.fff}", e.SignalTime);
+            ///Console.WriteLine("DriversChanged at {0:HH:mm:ss.fff}", e.SignalTime);
             foreach (Section section in track.Sections)
             {
                 SectionData data = GetSectionData(section);
@@ -305,7 +323,11 @@ namespace Controller
 
 
                 }
-                
+            }
+            if (RaceEnded_LapsCompleted(track) == true)
+            {
+               Console.SetCursorPosition(40, 40);
+               Console.WriteLine("race has ended yeeeeeeeey");
             }
             timer.Start();
         }
@@ -315,12 +337,12 @@ namespace Controller
         //    (Object) SectionData [IP Left, DistanceLeft, IP Right, DistanceRight] 
         //   >
 
-        public virtual void MoveDrivers(Track track) //breedte van een sectie is 100
-        {
-            //Console.WriteLine("drivers were moved"); works
+        //public virtual void MoveDrivers(Track track) //breedte van een sectie is 100
+        //{
+        //    //Console.WriteLine("drivers were moved"); works
 
             
-        }
+        //}
 
        
        
