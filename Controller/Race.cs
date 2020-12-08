@@ -17,8 +17,8 @@ namespace Controller
         public Dictionary<Section, SectionData> _positions;
         private System.Timers.Timer timer;
         public int LapsAmount;
+        public int ParticipantsOnTrack;
         // public delegate EventHandler DriversChanged(object sender, DriversChangedEventArgs d);
-
 
         public delegate void DriversChanged(object sender, DriversChangedEventArgs d);
 
@@ -42,12 +42,13 @@ namespace Controller
             track = _track;
             LapsAmount = 0;
             Participants = _participants;
+            ParticipantsOnTrack = Participants.Count();
             _random = new Random(DateTime.Now.Millisecond);
             _positions = new Dictionary<Section, SectionData>();
             giveStartPositions(_track, _participants);
             RandomizeEquipment(_participants);
-            SetTimer();
-            
+            SetTimer(); //already starts invoking ondriverschanged
+           
             //trying to subscribe the driverschanged event to the event handler OnDriversChanged
         }
 
@@ -85,6 +86,11 @@ namespace Controller
             Console.SetCursorPosition(40, y);
             Console.Write($"Driver {driver.Name} has completed a lap. Lap nr: {driver.LapsCompleted}"); //program seems to go back in time and change the lapscompleted of a driver. (multithreading issue?)
             y++;
+        }
+        
+        public bool RaceEnded_NoParticipantsLeft()
+        {
+            return ParticipantsOnTrack == 0;
         }
 
         public bool RaceEnded_LapsCompleted(Track track)
@@ -131,6 +137,7 @@ namespace Controller
                                         {
                                             data.DistanceLeft = 0;
                                             data.Left = null;
+                                            ParticipantsOnTrack--;
                                         }
                                         else
                                         {
@@ -149,6 +156,7 @@ namespace Controller
                                         {
                                             data.DistanceLeft = 0;
                                             data.Left = null;
+                                            ParticipantsOnTrack--;
                                         }
                                         else
                                         {
@@ -224,6 +232,7 @@ namespace Controller
                                         {
                                             data.DistanceRight = 0;
                                             data.Right = null;
+                                            ParticipantsOnTrack--;
                                         }
                                         else
                                         {
@@ -242,6 +251,7 @@ namespace Controller
                                         {
                                             data.DistanceRight = 0;
                                             data.Right = null;
+                                            ParticipantsOnTrack--;
                                         }
                                         else
                                         {
@@ -324,10 +334,11 @@ namespace Controller
 
                 }
             }
-            if (RaceEnded_LapsCompleted(track) == true)
+            if (RaceEnded_NoParticipantsLeft())
             {
-               Console.SetCursorPosition(40, 40);
-               Console.WriteLine("race has ended yeeeeeeeey");
+                Console.WriteLine("TESTPARTICIPANT"); //works! :DDD
+               // CleanupDelegates(); //only once, next race after this.
+                Data.NextRace();
             }
             timer.Start();
         }

@@ -1,6 +1,7 @@
 ﻿namespace Controller
 {
     using Model;
+    using static Controller.Race;
 
     public static class Data
     {
@@ -23,6 +24,10 @@
             if(t != null)
             {
                 CurrentRace = new Race(t, Competition.Participants);
+            }
+            else
+            {
+                System.Console.WriteLine("No Tracks Left");
             }
             
         }
