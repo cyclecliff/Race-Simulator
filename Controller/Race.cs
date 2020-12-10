@@ -18,11 +18,17 @@ namespace Controller
         private System.Timers.Timer timer;
         public int LapsAmount;
         public int ParticipantsOnTrack;
-        // public delegate EventHandler DriversChanged(object sender, DriversChangedEventArgs d);
+      //public delegate EventHandler DriversChanged(object sender, DriversChangedEventArgs d);
 
         public delegate void DriversChanged(object sender, DriversChangedEventArgs d);
 
+        public delegate void RaceFinished(object sender, EventArgs e);
+
         public event DriversChanged Drivers_Changed;
+
+        public event RaceFinished Race_Finished;
+
+        
 
         public SectionData GetSectionData(Section section)
         {
@@ -39,6 +45,7 @@ namespace Controller
 
         public Race(Track _track, List<IParticipant> _participants)
         {
+            
             track = _track;
             LapsAmount = 0;
             Participants = _participants;
@@ -334,14 +341,23 @@ namespace Controller
 
                 }
             }
+            timer.Start();
             if (RaceEnded_NoParticipantsLeft())
             {
-                Console.WriteLine("TESTPARTICIPANT"); //works! :DDD
-               // CleanupDelegates(); //only once, next race after this.
-                Data.NextRace();
+                timer.Stop();
+                CleanupDelegates(); //removes the events form the event handler
+                //do exactly what is needed to start a new race
+
+
+                Console.Clear();
+                Console.WriteLine("RACE_ENDED"); //works! :DDD
+
+
             }
-            timer.Start();
         }
+
+       
+
         //   Dictionairy<Section, SectionData>
         //   <
         //    (Object) Section     [X, Y, Type, Direction] , 
@@ -351,14 +367,7 @@ namespace Controller
         //public virtual void MoveDrivers(Track track) //breedte van een sectie is 100
         //{
         //    //Console.WriteLine("drivers were moved"); works
-
-            
         //}
-
-       
-       
-
-
         public void giveStartPositions(Track track, List<IParticipant> participants)//refactor so that the finish is the first section in the _positions list
         {
             Queue<IParticipant> participantz = new Queue<IParticipant>(participants);

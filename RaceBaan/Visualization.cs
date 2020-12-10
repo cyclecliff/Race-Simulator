@@ -15,7 +15,9 @@ namespace RaceBaan
 
         public static void Initialize()
         {
-          
+            SetTrackData(Data.CurrentRace.track, Direction.Right);
+            DrawTrack(Data.CurrentRace.track);
+
         }
 
         public static string DrawPositions(String _string, SectionData sectiondata)
@@ -338,7 +340,7 @@ namespace RaceBaan
                                                                 "|v  |", 
                                                                 "|   |" }; // check
 
-        private static string[] _RightCorner_Horizontal_1   = { "---\\ ", 
+        private static string[] _RightCorner_Horizontal_1   = { "----\\ ", 
                                                                 "1   |", 
                                                                 "    |", 
                                                                 "2   |", 
@@ -347,38 +349,38 @@ namespace RaceBaan
                                                                 "|   2", 
                                                                 "|    ", 
                                                                 "|   1", 
-                                                                " \\---" };
-        private static string[] _RightCorner_Vertical_0     = { " ----", 
-                                                                "/    ", 
+                                                                "\\----" };
+        private static string[] _RightCorner_Vertical_0     = { "/----", 
+                                                                "|    ", 
                                                                 "|    ", 
                                                                 "|    ", 
                                                                 "|1 2/" };
         private static string[] _RightCorner_Vertical_2     = { "/2 1|", 
                                                                 "    |", 
                                                                 "    |", 
-                                                                "    /", 
-                                                                "---- " };//check
+                                                                "    |", 
+                                                                "----/ " };//check
 
         private static string[] _LeftCorner_Horizontal_1    = { "/   |", 
                                                                 "1   |",        
                                                                 "    |", 
                                                                 "2   |", 
-                                                                "---/" };
-        private static string[] _LeftCorner_Horizontal_3    = { " /---", 
+                                                                "----/" };
+        private static string[] _LeftCorner_Horizontal_3    = { "/----", 
                                                                 "|   2", 
                                                                 "|    ", 
                                                                 "|   1", 
                                                                 "|   /" };
-        private static string[] _LeftCorner_Vertical_0      = { "---- ", 
-                                                                "    \\",
+        private static string[] _LeftCorner_Vertical_0      = { "----\\", 
+                                                                "    |",
                                                                 "    |", 
                                                                 "    |", 
                                                                 "\\1 2|" };
         private static string[] _LeftCorner_Vertical_2      = { "|2 1\\", 
                                                                 "|    ", 
                                                                 "|    ", 
-                                                                "\\    ", 
-                                                                " ----" }; 
+                                                                "|    ", 
+                                                                "\\----" }; 
 
 
 

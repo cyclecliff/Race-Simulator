@@ -7,35 +7,31 @@ namespace RaceBaan
 {
     public class Program 
     {
+        public static void SubscribeEvents()
+        {
+            Data.CurrentRace.Drivers_Changed += Visualization.OnDriversChanged;
+            Data.CurrentRace.Race_Finished += Data.OnRaceFinished;
+            
+            //Data.CurrentRace.Race_Finished += 
+        }
 
+        public static void OnFinishedRace(object source, EventArgs args)
+        {
+            SubscribeEvents();
+        }
 
         static void Main(string[] args)
-        { 
-            
+        {
             Console.CursorVisible = false;
             Data.Initialize();
-            Data.NextRace();
-            //Data.NextRace();
-            //Data.NextRace();
-            Data.CurrentRace.Drivers_Changed += Visualization.OnDriversChanged;
-            //Console.WriteLine(Data.CurrentRace.track.Name);
-            //Data.NextRace();
-
-            //Data.addTracks();
-
-            Visualization.SetTrackData(Data.CurrentRace.track, Direction.Right);
-            //Data.CurrentRace.giveStartPositions(Data.CurrentRace.track, Data.CurrentRace.Participants);
-            Visualization.DrawTrack(Data.CurrentRace.track);
+            Visualization.Initialize();
+            SubscribeEvents();
             
-            //Visualization.SetTrackData(Data.CurrentRace.track, Direction.Right);
-            //Data.CurrentRace.giveStartPositions(Data.CurrentRace.track, Data.CurrentRace.Participants);
-            //Visualization.DrawTrack(Data.CurrentRace.track);
-            for (; ; )
+
+            while(true)
             {
-                Thread.Sleep(600);
+                Thread.Sleep(100);
             }
-
-
         }
     }
 }

@@ -1,25 +1,30 @@
-﻿namespace Controller
+﻿using Model;
+using System;
+using static Controller.Race;
+
+namespace Controller
 {
-    using Model;
-    using static Controller.Race;
 
     public static class Data
     {
         public static Competition Competition { get; set; }
         public static Race        CurrentRace;
 
-        public static void Initialize() {
-
+        public static void Initialize() 
+        {
             Competition = new Competition();
             addParticipants();
             addTracks();
-            
+            NextRace();
         }
 
+        public static void OnRaceFinished(object o, EventArgs e)
+        {
+            NextRace();
+        }
 
         public static void NextRace()
         {
-
             Track t = Competition.NextTrack();
             if(t != null)
             {
@@ -27,7 +32,7 @@
             }
             else
             {
-                System.Console.WriteLine("No Tracks Left");
+                System.Console.WriteLine("N o    T r a c k s    L e f t");
             }
             
         }
