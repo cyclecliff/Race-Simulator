@@ -17,7 +17,6 @@ namespace RaceBaan
         {
             SetTrackData(Data.CurrentRace.track, Direction.Right);
             DrawTrack(Data.CurrentRace.track);
-
         }
 
         public static string DrawPositions(String _string, SectionData sectiondata)
@@ -31,16 +30,31 @@ namespace RaceBaan
             //not the right way, its an idea, though \/
             if (_string.Contains("1") && sectiondata.Left != null)
             {
-                _string = _string.Replace("1", sectiondata.Left.Name);
+                if (sectiondata.Left.Equipment.IsBroken)
+                {
+                    _string = _string.Replace("1", "X");
+                }
+                else
+                {
+                    _string = _string.Replace("1", sectiondata.Left.Name);
+                }
             }
             else
             {
                 _string = _string.Replace("1", " ");
             }
 
+
             if (_string.Contains("2") && sectiondata.Right != null)
             {
-                _string = _string.Replace("2", sectiondata.Right.Name);
+                if (sectiondata.Right.Equipment.IsBroken)
+                {
+                    _string = _string.Replace("2", "X");
+                }
+                else
+                {
+                    _string = _string.Replace("2", sectiondata.Right.Name);
+                }
             }
             else
             {
@@ -51,17 +65,10 @@ namespace RaceBaan
 
         }
 
-
-
-       
-
         public static void OnDriversChanged(object o, DriversChangedEventArgs d)
         {
             DrawTrack(d.track); //casten werkt
         }
-
-        
-
         public static void setDirections(Track track, Direction _startingdirection)
         {
             Direction direction = _startingdirection;        
@@ -153,7 +160,6 @@ namespace RaceBaan
             currentX += track.StartXoffset;
             currentY += track.StartYoffset;
                
-
             foreach (Section section in track.Sections)
             {
                 switch (section.SectionType)
@@ -318,7 +324,7 @@ namespace RaceBaan
                                                                 "|# #|", 
                                                                 "| # |", 
                                                                 "|# #|" }; // check
-        
+
         private static string[] _Start_Horizontal_1         = { "-----", 
                                                                 "1>   ", 
                                                                 "     ", 
@@ -381,9 +387,6 @@ namespace RaceBaan
                                                                 "|    ", 
                                                                 "|    ", 
                                                                 "\\----" }; 
-
-
-
 
         private static string[] _Straight_Horizontal_1      = { "-----", 
                                                                 "1    ", 

@@ -12,6 +12,12 @@ namespace Model
         {
             track = _track;
         }
+    }
+
+    public class RaceFinishedEventArgs : EventArgs
+    {
+      public List<IParticipant> Participants;
+
 
     }
 }

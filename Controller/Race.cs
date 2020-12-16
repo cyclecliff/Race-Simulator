@@ -13,7 +13,7 @@ namespace Controller
         public Track track;
         public List<IParticipant> Participants;
         public DateTime StartTime;
-        private Random _random;
+        private static Random _random;
         public Dictionary<Section, SectionData> _positions;
         private System.Timers.Timer timer;
         public int LapsAmount;
@@ -22,13 +22,11 @@ namespace Controller
 
         public delegate void DriversChanged(object sender, DriversChangedEventArgs d);
 
-        public delegate void RaceFinished(object sender, EventArgs e);
+        public delegate void RaceFinished(object sender, RaceFinishedEventArgs e);
 
         public event DriversChanged Drivers_Changed;
 
         public event RaceFinished Race_Finished;
-
-        
 
         public SectionData GetSectionData(Section section)
         {
@@ -43,77 +41,23 @@ namespace Controller
             }
         }
 
-        public Race(Track _track, List<IParticipant> _participants)
+        public static void ShouldBeBroken(IEquipment car) //breaks down cars and undoes it
         {
-            
-            track = _track;
-            LapsAmount = 0;
-            Participants = _participants;
-            ParticipantsOnTrack = Participants.Count();
-            _random = new Random(DateTime.Now.Millisecond);
-            _positions = new Dictionary<Section, SectionData>();
-            giveStartPositions(_track, _participants);
-            RandomizeEquipment(_participants);
-            SetTimer(); //already starts invoking ondriverschanged
-           
-            //trying to subscribe the driverschanged event to the event handler OnDriversChanged
-        }
+            int randomnumber = _random.Next(1, 10);
 
-        public void CleanupDelegates()
-        {
-           // Drivers_Changed -= OnDriversChanged;
-           foreach(DriversChanged d in Drivers_Changed.GetInvocationList())
-           {
-                Drivers_Changed -= d;
-           }
-        }
+            bool originallybroken = car.IsBroken;
 
-        public int getTravelDistanceOfDriver(Driver d)
-        {
-            return d.Equipment.Performance * d.Equipment.Speed;
-        }
+            car.IsBroken = (car.Quality + car.Performance > randomnumber); //the higher the quality and the performance, the less change the car'll break down
 
-        //at every timed event, move the racers
-
-        private void SetTimer()
-        {
-            // Create a timer with half second interval.
-            timer = new System.Timers.Timer(1000);
-            // Hook up the Elapsed event for the timer. 
-            timer.Elapsed += OnTimedEvent; //should be on driverschanged
-            //timer.Elapsed += OnDriversChanged;
-            timer.AutoReset = true;
-            timer.Enabled = true;
-        }
-
-        public int y = 0;
-        public void LapCompletedTest(IParticipant driver)
-        {
-            driver.LapsCompleted++;
-            Console.SetCursorPosition(40, y);
-            Console.Write($"Driver {driver.Name} has completed a lap. Lap nr: {driver.LapsCompleted}"); //program seems to go back in time and change the lapscompleted of a driver. (multithreading issue?)
-            y++;
-        }
-        
-        public bool RaceEnded_NoParticipantsLeft()
-        {
-            return ParticipantsOnTrack == 0;
-        }
-
-        public bool RaceEnded_LapsCompleted(Track track)
-        {
-            bool RaceEnded = false;
-            //another way, each time a participant gets deleted, change a counter, when the counter equals zero, the race stops
-
-            foreach(Section section in track.Sections)
+            if (!originallybroken) //car not broken when i comes in
             {
-                SectionData data = GetSectionData(section);
-
-                RaceEnded = (data == null) ? true : false;
-            }
-            return RaceEnded;
+                car.Performance -= _random.Next((int)0.1, (int)0.5);
+            } 
+           
+            
+            
+            //each time a car is turned from unbroken to broken, adjust a value
         }
-
         public virtual void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             timer.Stop();
@@ -134,9 +78,13 @@ namespace Controller
                             {
                                 var MovingDriver = _positions.ElementAt(i).Value.Left;
 
+                                Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+                                ShouldBeBroken(MovingDriver.Equipment); //chance that this will break the car
+                                Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+
                                 if (i == _positions.Count - 1)                              //is hij aan het "einde" van de track
                                 {
-                                    if (_positions.ElementAt(0).Value.Left == null)         //kan ik vooruit (naar het begin)
+                                    if (_positions.ElementAt(0).Value.Left == null && !MovingDriver.Equipment.IsBroken)         //kan ik vooruit (naar het begin)
                                     {
                                         //MovingDriver.LapsCompleted++;
                                         LapCompletedTest(MovingDriver);
@@ -152,11 +100,11 @@ namespace Controller
                                             _positions.ElementAt(0).Value.DistanceLeft = leftDistance - 200;
                                             data.DistanceLeft = 0;
                                             data.Left = null;
+                                            Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+                                            break;
                                         }
-                                        Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
-                                        break;
                                     }
-                                    else if (_positions.ElementAt(0).Value.Right == null)    //kan ik van baan wisselen (naar het begin)
+                                    else if (_positions.ElementAt(0).Value.Right == null && !MovingDriver.Equipment.IsBroken)    //kan ik van baan wisselen (naar het begin)
                                     {
                                         LapCompletedTest(MovingDriver);
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
@@ -171,15 +119,14 @@ namespace Controller
                                             _positions.ElementAt(0).Value.DistanceRight = leftDistance - 200;
                                             data.DistanceLeft = 0;
                                             data.Left = null;
+                                            Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+                                            break;
                                         }
-                                        Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
-                                        break;
                                     }
                                     else
                                     {
-                                        data.DistanceLeft = 0;//ik kan niet inhalen en niet doorrijden : distance wordt gereset
+                                        data.DistanceLeft = 0;//ik kan niet inhalen en niet doorrijden of isbroken: distance wordt gereset
                                     }
-                                    
                                 }
                                 else                                                             //hij is niet aan het einde
                                 {
@@ -208,9 +155,7 @@ namespace Controller
                                         data.DistanceLeft = 0; //ik kan niet inhalen en niet doorrijden : distance wordt gereset
                                     }
                                 }
-
                             }
-
                         }
                     }
                     else
@@ -230,9 +175,13 @@ namespace Controller
                             {
                                 var MovingDriver = _positions.ElementAt(i).Value.Right;
 
+                                Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+                                ShouldBeBroken(MovingDriver.Equipment);
+                                Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+
                                 if (i == _positions.Count - 1)                              //is hij aan het "einde" van de track
                                 {
-                                    if (_positions.ElementAt(0).Value.Right == null)         //kan ik vooruit (naar het begin)
+                                    if (_positions.ElementAt(0).Value.Right == null && !MovingDriver.Equipment.IsBroken)         //kan ik vooruit (naar het begin)
                                     {
                                         LapCompletedTest(MovingDriver);
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
@@ -247,11 +196,11 @@ namespace Controller
                                             _positions.ElementAt(0).Value.DistanceRight = rightDistance - 200;
                                             data.DistanceRight = 0;
                                             data.Right = null;
+                                            Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+                                            break;
                                         }
-                                        Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
-                                        break;
                                     }
-                                    else if (_positions.ElementAt(0).Value.Left == null)    //kan ik van baan wisselen (naar het begin)
+                                    else if (_positions.ElementAt(0).Value.Left == null && !MovingDriver.Equipment.IsBroken)    //kan ik van baan wisselen (naar het begin)
                                     {
                                         LapCompletedTest(MovingDriver);
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
@@ -266,9 +215,9 @@ namespace Controller
                                             _positions.ElementAt(0).Value.DistanceLeft = rightDistance - 200;
                                             data.DistanceRight = 0;
                                             data.Right = null;
+                                            Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+                                            break;
                                         }
-                                        Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
-                                        break;
                                     }
                                     else
                                     {
@@ -278,7 +227,7 @@ namespace Controller
                                 }
                                 else                                                             //hij is niet aan het einde
                                 {
-                                    if (_positions.ElementAt(i + 1).Value.Right == null)         //kan ik vooruit (naar het begin)
+                                    if (_positions.ElementAt(i + 1).Value.Right == null && !MovingDriver.Equipment.IsBroken)         //kan ik vooruit (naar het begin)
                                     {
                                         
                                         _positions.ElementAt(i + 1).Value.Right = MovingDriver;
@@ -288,7 +237,7 @@ namespace Controller
                                         Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                         break;
                                     }
-                                    else if (_positions.ElementAt(i + 1).Value.Left == null)    //kan ik van baan wisselen (naar het begin)
+                                    else if (_positions.ElementAt(i + 1).Value.Left == null && !MovingDriver.Equipment.IsBroken)    //kan ik van baan wisselen (naar het begin)
                                     {
                                         
                                         _positions.ElementAt(i + 1).Value.Left = MovingDriver;
@@ -332,12 +281,7 @@ namespace Controller
                     //positions.Remove(participant)
                     //positions.ElementAt(i).Value.Left == null; ;
 
-
                     //niet bewegen als het volgende vakje bezet is, en als inhalen ook onmogelijk is (van left <> right)
-
-
-
-
 
                 }
             }
@@ -347,16 +291,79 @@ namespace Controller
                 timer.Stop();
                 CleanupDelegates(); //removes the events form the event handler
                 //do exactly what is needed to start a new race
-
-
-                Console.Clear();
-                Console.WriteLine("RACE_ENDED"); //works! :DDD
-
-
+                Race_Finished?.Invoke(this, new RaceFinishedEventArgs() { Participants = Participants});
             }
         }
 
-       
+        public Race(Track _track, List<IParticipant> _participants)
+        {
+            track = _track;
+            LapsAmount = 1;
+            Participants = _participants;
+            ParticipantsOnTrack = Participants.Count();
+            _random = new Random(DateTime.Now.Millisecond);
+            _positions = new Dictionary<Section, SectionData>();
+            giveStartPositions(_track, _participants);
+            RandomizeEquipment(_participants);
+            SetTimer(); //already starts invoking ondriverschanged
+            //trying to subscribe the driverschanged event to the event handler OnDriversChanged
+        }
+
+        public void CleanupDelegates()
+        {
+           // Drivers_Changed -= OnDriversChanged;
+           foreach(DriversChanged d in Drivers_Changed.GetInvocationList())
+           {
+                Drivers_Changed -= d;
+           }
+        }
+
+        public int getTravelDistanceOfDriver(Driver d)
+        {
+            return d.Equipment.Performance * d.Equipment.Speed;
+        }
+
+        //at every timed event, move the racers
+
+        private void SetTimer()
+        {
+            // Create a timer with half second interval.
+            timer = new System.Timers.Timer(1000);
+            // Hook up the Elapsed event for the timer. 
+            timer.Elapsed += OnTimedEvent; //should be on driverschanged
+            //timer.Elapsed += OnDriversChanged;
+            timer.AutoReset = true;
+            timer.Enabled = true;
+        }
+
+        public int y = 0;
+        public void LapCompletedTest(IParticipant driver)
+        {
+            driver.LapsCompleted++;
+            Console.SetCursorPosition(50, y);
+            Console.Write($"Driver {driver.Name} has completed a lap. Lap nr: {driver.LapsCompleted}"); //program seems to go back in time and change the lapscompleted of a driver. (multithreading issue?)
+            y++;
+        }
+        
+        public bool RaceEnded_NoParticipantsLeft()
+        {
+            return ParticipantsOnTrack == 0;
+        }
+
+        public bool RaceEnded_LapsCompleted(Track track)
+        {
+            bool RaceEnded = false;
+            //another way, each time a participant gets deleted, change a counter, when the counter equals zero, the race stops
+
+            foreach(Section section in track.Sections)
+            {
+                SectionData data = GetSectionData(section);
+
+                RaceEnded = (data == null) ? true : false;
+            }
+            return RaceEnded;
+        }
+
 
         //   Dictionairy<Section, SectionData>
         //   <
@@ -368,6 +375,7 @@ namespace Controller
         //{
         //    //Console.WriteLine("drivers were moved"); works
         //}
+
         public void giveStartPositions(Track track, List<IParticipant> participants)//refactor so that the finish is the first section in the _positions list
         {
             Queue<IParticipant> participantz = new Queue<IParticipant>(participants);

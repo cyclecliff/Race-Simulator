@@ -11,7 +11,8 @@ namespace RaceBaan
         {
             Data.CurrentRace.Drivers_Changed += Visualization.OnDriversChanged;
             Data.CurrentRace.Race_Finished += Data.OnRaceFinished;
-            
+            Data.CurrentRace.Race_Finished += OnFinishedRace;
+            Visualization.Initialize();
             //Data.CurrentRace.Race_Finished += 
         }
 
@@ -22,6 +23,8 @@ namespace RaceBaan
 
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.CursorVisible = false;
             Data.Initialize();
             Visualization.Initialize();
