@@ -43,7 +43,7 @@ namespace Controller
 
         public static void ShouldBeBroken(IEquipment car) //breaks down cars and undoes it
         {
-            int randomnumber = _random.Next(1, 10);
+            int randomnumber = _random.Next(1, 20);
 
             bool originallybroken = car.IsBroken;
 
@@ -51,17 +51,15 @@ namespace Controller
 
             if (!originallybroken) //car not broken when i comes in
             {
-                car.Performance -= _random.Next((int)0.1, (int)0.5);
+                car.Performance -= _random.Next((int)0.1, (int)0.5); //performance gets worse after each breakdown
             } 
-           
-            
-            
             //each time a car is turned from unbroken to broken, adjust a value
         }
         public virtual void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             timer.Stop();
             ///Console.WriteLine("DriversChanged at {0:HH:mm:ss.fff}", e.SignalTime);
+
             foreach (Section section in track.Sections)
             {
                 SectionData data = GetSectionData(section);
@@ -78,91 +76,96 @@ namespace Controller
                             {
                                 var MovingDriver = _positions.ElementAt(i).Value.Left;
 
-                                Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                 ShouldBeBroken(MovingDriver.Equipment); //chance that this will break the car
-                                Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+
+                                //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
 
                                 if (i == _positions.Count - 1)                              //is hij aan het "einde" van de track
                                 {
                                     if (_positions.ElementAt(0).Value.Left == null && !MovingDriver.Equipment.IsBroken)         //kan ik vooruit (naar het begin)
                                     {
-                                        //MovingDriver.LapsCompleted++;
                                         LapCompletedTest(MovingDriver);
+
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
                                         {
-                                            data.DistanceLeft = 0;
-                                            data.Left = null;
                                             ParticipantsOnTrack--;
                                         }
                                         else
                                         {
                                             _positions.ElementAt(0).Value.Left = MovingDriver;
                                             _positions.ElementAt(0).Value.DistanceLeft = leftDistance - 200;
-                                            data.DistanceLeft = 0;
-                                            data.Left = null;
-                                            Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
-                                            break;
                                         }
+
+                                        data.DistanceLeft = 0;
+                                        data.Left = null;
+                                        //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                     }
                                     else if (_positions.ElementAt(0).Value.Right == null && !MovingDriver.Equipment.IsBroken)    //kan ik van baan wisselen (naar het begin)
                                     {
                                         LapCompletedTest(MovingDriver);
+
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
                                         {
-                                            data.DistanceLeft = 0;
-                                            data.Left = null;
                                             ParticipantsOnTrack--;
                                         }
                                         else
                                         {
                                             _positions.ElementAt(0).Value.Right = MovingDriver;
                                             _positions.ElementAt(0).Value.DistanceRight = leftDistance - 200;
-                                            data.DistanceLeft = 0;
-                                            data.Left = null;
-                                            Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
-                                            break;
+                                          
                                         }
+
+                                        data.DistanceLeft = 0;
+                                        data.Left = null;
+                                        //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                     }
                                     else
                                     {
                                         data.DistanceLeft = 0;//ik kan niet inhalen en niet doorrijden of isbroken: distance wordt gereset
+                                        //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                     }
                                 }
                                 else                                                             //hij is niet aan het einde
                                 {
                                     if (_positions.ElementAt(i + 1).Value.Left == null)         //kan ik vooruit 
                                     {
-                                        
                                         _positions.ElementAt(i + 1).Value.Left = MovingDriver;
                                         _positions.ElementAt(i + 1).Value.DistanceLeft = leftDistance - 200;
                                         data.DistanceLeft = 0;
                                         data.Left = null;
-                                        Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+                                        //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track));
                                         break;
                                     }
                                     else if (_positions.ElementAt(i + 1).Value.Right == null)    //kan ik van baan wisselen 
                                     {
-                                        
                                         _positions.ElementAt(i + 1).Value.Right = MovingDriver;
                                         _positions.ElementAt(i + 1).Value.DistanceRight = leftDistance - 200;
                                         data.DistanceLeft = 0;
                                         data.Left = null;
-                                        Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+                                        //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track));
                                         break;
                                     }                                                           
+                                        
+
                                     else
                                     {
                                         data.DistanceLeft = 0; //ik kan niet inhalen en niet doorrijden : distance wordt gereset
+                                        //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                     }
                                 }
+
+
                             }
+
                         }
                     }
                     else
                     {
                         data.DistanceLeft += leftDistance;
+                        //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                     }
                 }
+
                 if (data.Right != null)
                 {
                     int rightDistance = data.DistanceRight + getTravelDistanceOfDriver((Driver)data.Right); //berekent te reizen afstand. works
@@ -175,83 +178,84 @@ namespace Controller
                             {
                                 var MovingDriver = _positions.ElementAt(i).Value.Right;
 
-                                Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
-                                ShouldBeBroken(MovingDriver.Equipment);
-                                Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+                                ShouldBeBroken(MovingDriver.Equipment); //chance that this will break the car
+
+                                //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
 
                                 if (i == _positions.Count - 1)                              //is hij aan het "einde" van de track
                                 {
                                     if (_positions.ElementAt(0).Value.Right == null && !MovingDriver.Equipment.IsBroken)         //kan ik vooruit (naar het begin)
                                     {
                                         LapCompletedTest(MovingDriver);
+
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
                                         {
-                                            data.DistanceRight = 0;
-                                            data.Right = null;
                                             ParticipantsOnTrack--;
                                         }
                                         else
                                         {
                                             _positions.ElementAt(0).Value.Right = MovingDriver;
                                             _positions.ElementAt(0).Value.DistanceRight = rightDistance - 200;
-                                            data.DistanceRight = 0;
-                                            data.Right = null;
-                                            Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
-                                            break;
                                         }
+
+                                        data.DistanceRight = 0;
+                                        data.Right = null;
+                                        //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                     }
                                     else if (_positions.ElementAt(0).Value.Left == null && !MovingDriver.Equipment.IsBroken)    //kan ik van baan wisselen (naar het begin)
                                     {
                                         LapCompletedTest(MovingDriver);
+
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
                                         {
-                                            data.DistanceRight = 0;
-                                            data.Right = null;
                                             ParticipantsOnTrack--;
                                         }
                                         else
                                         {
                                             _positions.ElementAt(0).Value.Left = MovingDriver;
                                             _positions.ElementAt(0).Value.DistanceLeft = rightDistance - 200;
-                                            data.DistanceRight = 0;
-                                            data.Right = null;
-                                            Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
-                                            break;
+
                                         }
+
+                                        data.DistanceRight = 0;
+                                        data.Right = null;
+                                        //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                     }
                                     else
                                     {
-                                        data.DistanceRight = 0; //ik kan niet inhalen en niet doorrijden : distance wordt gereset
+                                        data.DistanceRight = 0;//ik kan niet inhalen en niet doorrijden of isbroken: distance wordt gereset
+                                        //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                     }
-                                   
                                 }
                                 else                                                             //hij is niet aan het einde
                                 {
-                                    if (_positions.ElementAt(i + 1).Value.Right == null && !MovingDriver.Equipment.IsBroken)         //kan ik vooruit (naar het begin)
+                                    if (_positions.ElementAt(i + 1).Value.Right == null)         //kan ik vooruit 
                                     {
-                                        
                                         _positions.ElementAt(i + 1).Value.Right = MovingDriver;
                                         _positions.ElementAt(i + 1).Value.DistanceRight = rightDistance - 200;
                                         data.DistanceRight = 0;
                                         data.Right = null;
-                                        Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+                                        //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track));
                                         break;
                                     }
-                                    else if (_positions.ElementAt(i + 1).Value.Left == null && !MovingDriver.Equipment.IsBroken)    //kan ik van baan wisselen (naar het begin)
+                                    else if (_positions.ElementAt(i + 1).Value.Left == null)    //kan ik van baan wisselen 
                                     {
-                                        
                                         _positions.ElementAt(i + 1).Value.Left = MovingDriver;
                                         _positions.ElementAt(i + 1).Value.DistanceLeft = rightDistance - 200;
                                         data.DistanceRight = 0;
                                         data.Right = null;
-                                        Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+                                        //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track));
                                         break;
-                                    }                                                            
+                                    }
+
+
                                     else
                                     {
-                                        data.DistanceRight = 0;//ik kan niet inhalen en niet doorrijden : distance wordt gereset
+                                        data.DistanceRight = 0; //ik kan niet inhalen en niet doorrijden : distance wordt gereset
+                                        //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                     }
                                 }
+
 
                             }
 
@@ -260,31 +264,14 @@ namespace Controller
                     else
                     {
                         data.DistanceRight += rightDistance;
+                        //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                     }
-
-                    /*
-                    if (_positions.ElementAt(i + 1).Value.Left == null)//kan ik vooruit
-                    {
-
-                    }
-
-                    else if(_positions.ElementAt(i + 1).Value.Left == null)//kan ik vooruit naar de andere baanhelft?
-                    {
-
-                    }
-                    */
-                    //else if(_positions.ElementAt(i).Value.Right == null)//kan ik naar de andere baan (distance blijft 0)
-                    //{ mooi idee, maak mezelf niet te ingewikkeld
-
-                    // }
-
-                    //positions.Remove(participant)
-                    //positions.ElementAt(i).Value.Left == null; ;
-
-                    //niet bewegen als het volgende vakje bezet is, en als inhalen ook onmogelijk is (van left <> right)
-
                 }
+
             }
+
+            Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
+
             timer.Start();
             if (RaceEnded_NoParticipantsLeft())
             {
