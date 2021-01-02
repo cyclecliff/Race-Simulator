@@ -16,7 +16,7 @@ namespace RaceBaan
         public static void Initialize()
         {
             SetTrackData(Data.CurrentRace.track, Direction.Right);
-            DrawTrack(Data.CurrentRace.track);
+            //DrawTrack(Data.CurrentRace.track);
         }
 
         public static string DrawPositions(String _string, SectionData sectiondata)

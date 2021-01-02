@@ -285,7 +285,7 @@ namespace Controller
         public Race(Track _track, List<IParticipant> _participants)
         {
             track = _track;
-            LapsAmount = 1;
+            LapsAmount = 0;
             Participants = _participants;
             ParticipantsOnTrack = Participants.Count();
             _random = new Random(DateTime.Now.Millisecond);

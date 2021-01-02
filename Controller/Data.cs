@@ -20,12 +20,12 @@ namespace Controller
 
         public static void OnRaceFinished(object o, RaceFinishedEventArgs rfe)
         {
-            Console.Clear();
             NextRace();
             foreach(IParticipant participant in rfe.Participants) //resets the lapscompleted
             {
                 participant.LapsCompleted = -1;
             }
+            Console.Clear();
         }
 
         public static void NextRace()
@@ -39,7 +39,6 @@ namespace Controller
             {
                 Console.Clear();
                 Console.WriteLine("N o    T r a c k s    L e f t"); //somehow still draws the track after this
-                Console.Clear();
             }
         }
 
