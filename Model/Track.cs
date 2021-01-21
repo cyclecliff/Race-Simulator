@@ -24,9 +24,9 @@ namespace Model
         {
             LinkedList<Section> linkedListSection = new LinkedList<Section>();
 
-            foreach(SectionTypes Section in sections)
+            foreach(SectionTypes section in sections)
             {
-                linkedListSection.AddLast(new Section(Section));
+                linkedListSection.AddLast(new Section(section));
             }
 
             return linkedListSection;

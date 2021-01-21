@@ -125,16 +125,28 @@ namespace RaceBaan
                         if (section.Direction == Direction.Left)    {  xoffset -= 5; }
                         break;
                     case SectionTypes.LeftCorner:
-                        if (section.Direction == Direction.Up)      {  yoffset -= 5; xoffset -= 5; }
-                        if (section.Direction == Direction.Right)   {  yoffset -= 5; xoffset += 5; }
-                        if (section.Direction == Direction.Down)    {  yoffset += 5; xoffset += 5; }
-                        if (section.Direction == Direction.Left)    {  yoffset += 5; xoffset -= 5; }
+                        if (section.Direction == Direction.Up)      {  yoffset -= 5; 
+                                                                       xoffset -= 5; }
+                        if (section.Direction == Direction.Right)   {  yoffset -= 5; 
+                                                                       xoffset += 5; }
+                        if (section.Direction == Direction.Down)    {  yoffset += 5; 
+                                                                       xoffset += 5; }
+                        if (section.Direction == Direction.Left)    {  yoffset += 5; 
+                                                                       xoffset -= 5; }
                         break;
                     case SectionTypes.RightCorner:
-                        if (section.Direction == Direction.Up)      {  yoffset -= 5; xoffset += 5; }
-                        if (section.Direction == Direction.Right)   {  yoffset += 5; xoffset += 5; }
-                        if (section.Direction == Direction.Down)    {  yoffset += 5; xoffset -= 5; }
-                        if (section.Direction == Direction.Left)    {  yoffset -= 5; xoffset -= 5; }
+                        if (section.Direction == Direction.Up)      {  yoffset -= 5; 
+                                                                       xoffset += 5; 
+                                                                    }
+                        if (section.Direction == Direction.Right)   {  yoffset += 5; 
+                                                                       xoffset += 5; 
+                                                                    }
+                        if (section.Direction == Direction.Down)    {  yoffset += 5; 
+                                                                       xoffset -= 5; 
+                                                                    }
+                        if (section.Direction == Direction.Left)    {  yoffset -= 5; 
+                                                                       xoffset -= 5; 
+                                                                    }
                         break;
                 }
 

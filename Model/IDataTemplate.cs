@@ -4,10 +4,10 @@ namespace Model
 {
     public interface IDataTemplate
     {
-        string Naam { get; set; }
+        string Name{ get; set; }
 
         void AddToList(List<IDataTemplate> list);
 
-        string GetBestDriver(List<IDataTemplate> list);
+        string GetBestDriverName(List<IDataTemplate> list);
     }
 }
