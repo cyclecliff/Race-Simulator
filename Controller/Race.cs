@@ -31,6 +31,23 @@ namespace Controller
 
         public event RaceFinished Race_Finished;
 
+        public Race(Track _track, List<IParticipant> _participants)
+        {
+            track = _track;
+            LapsAmount = 1;
+            Participants = _participants;
+            ParticipantsOnTrack = Participants.Count();
+            _random = new Random(DateTime.Now.Millisecond);
+            _positions = new Dictionary<Section, SectionData>();
+            giveStartPositions(_track, _participants);
+            RandomizeEquipment(_participants);
+            SetTimer(); //already starts invoking ondriverschanged
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+            eindstand = new LinkedList<Driver>(); //drivers in order of finishing
+            //trying to subscribe the driverschanged event to the event handler OnDriversChanged
+        }
+
         public SectionData GetSectionData(Section section)
         {
             if (_positions.ContainsKey(section))
@@ -263,7 +280,6 @@ namespace Controller
                                         break;
                                     }
 
-
                                     else
                                     {
                                         data.DistanceRight = 0; //ik kan niet inhalen en niet doorrijden : distance wordt gereset
@@ -294,7 +310,8 @@ namespace Controller
                 stopwatch.Reset();
                 CleanupDelegates(); //removes the events form the event handler
                 //do exactly what is needed to start a new race
-                Data.Competition.GiveTimeDifference(Participants, eindstand);
+                Data.Competition.GiveTimeDifference(Participants, GetEindstand());
+                Data.Competition.GiveAvgSpeed(track, Participants);
                 Data.Competition.GiveLapTimes(Participants);
                 Data.Competition.GivePoints(GetEindstand()); //loopt vast hier
                 //give laptimes
@@ -302,29 +319,6 @@ namespace Controller
             }
         }
 
-
-        public void GiveLapTime(Driver driver)
-        {
-            //timer alleen voor events, gebruik stopwatch
-            //driver.Laptime + = (huidige stopwatchtijd - tijd dat driver als laatste over de finish ging.)
-        }
-
-        public Race(Track _track, List<IParticipant> _participants)
-        {
-            track = _track;
-            LapsAmount = 1;
-            Participants = _participants;
-            ParticipantsOnTrack = Participants.Count();
-            _random = new Random(DateTime.Now.Millisecond);
-            _positions = new Dictionary<Section, SectionData>();
-            giveStartPositions(_track, _participants);
-            RandomizeEquipment(_participants);
-            SetTimer(); //already starts invoking ondriverschanged
-            stopwatch = new Stopwatch();
-            stopwatch.Start();
-            eindstand = new LinkedList<Driver>(); //drivers in order of finishing
-            //trying to subscribe the driverschanged event to the event handler OnDriversChanged
-        }
 
         
 

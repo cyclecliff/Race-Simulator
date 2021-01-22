@@ -12,6 +12,7 @@ namespace Model
         public RaceData<DriverPoints> DriverPoints      { get; set; }
         public RaceData<DriverLapTime> DriverLapTime { get; set; }
         public RaceData<DriverTimeDifference> DriverTimeDifference { get; set; }
+        public RaceData<DriverAverageSpeed> DriverAverageSpeed { get; set; }
 
 
         public Competition()
@@ -22,8 +23,25 @@ namespace Model
             DriverPoints         = new RaceData<DriverPoints>();
             DriverLapTime        = new RaceData<DriverLapTime>();
             DriverTimeDifference = new RaceData<DriverTimeDifference>();
+            DriverAverageSpeed   = new RaceData<DriverAverageSpeed>();
         }
         
+
+        public void GiveAvgSpeed(Track track, List<IParticipant> participants) //takes each roudntime and divides it by the track length
+        {
+            int tracklength = track.Sections.Count * 200; // length of one section is 200 meters
+
+            foreach(Driver driver in participants)
+            {
+                DriverAverageSpeed avgspeeddriver = new DriverAverageSpeed();
+                avgspeeddriver.Name  = driver.Name;
+                avgspeeddriver.Speed = tracklength / driver.LapTime.Seconds; //meters per second
+                DriverAverageSpeed.AddItemToList(avgspeeddriver);
+            }
+
+            
+        }
+
         public void GiveLapTimes(List<IParticipant> participants)
         {
             foreach(Driver driver in participants)
@@ -35,7 +53,7 @@ namespace Model
                 driver.LapTime = new TimeSpan(0,00,00);
             }
         }
-         
+        
         public void GiveTimeDifference(List<IParticipant> participants, LinkedList<Driver> eindstand)
         {
             List<IParticipant> eindstandlist = new List<IParticipant>(); //turn LinkedList into a List in order to make it accesible by index
