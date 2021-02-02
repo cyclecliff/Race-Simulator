@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    public class RaceData<T> where T : IDataTemplate
+    public class RaceData<T> where T : IDataTemplate, new()
     {
 
         public List<IDataTemplate> list = new List<IDataTemplate>();
@@ -17,6 +17,27 @@ namespace Model
             //list.Add(variable);
         }
 
+        public string GetBestDriverName()
+        {
+            if (list.Count != 0)
+            {
+                var x = list[0].GetBestDriverName(list);
+                return x;
+            }
+            else
+            {
+                return " ";
+            }
+        }
+        //public string GetBestDriverName()
+        //{
+        //    T bestedriver = new T();
+        //    foreach(T driver in list)
+        //    {
+        //        if()
+        //    }
+
+        //}
     }
 
     /*

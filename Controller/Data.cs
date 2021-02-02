@@ -1,5 +1,6 @@
 ﻿using Model;
 using System;
+using System.Threading;
 using static Controller.Race;
 
 namespace Controller
@@ -20,12 +21,14 @@ namespace Controller
 
         public static void OnRaceFinished(object o, RaceFinishedEventArgs rfe)
         {
+            Thread.Sleep(1500);
+            Console.Clear();
             NextRace();
             foreach(IParticipant participant in rfe.Participants) //resets the lapscompleted
             {
                 participant.LapsCompleted = -1;
+                participant.LapTime = new TimeSpan(0);
             }
-            Console.Clear();
         }
 
         public static void NextRace()

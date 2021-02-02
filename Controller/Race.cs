@@ -60,7 +60,6 @@ namespace Controller
                 return _positions[section];
             }
         }
-
         public static void ShouldBeBroken(IEquipment car) //breaks down cars and undoes it
         {
             int randomnumber = _random.Next(1, 20);
@@ -79,7 +78,7 @@ namespace Controller
         {
             timer.Stop();
             ///Console.WriteLine("DriversChanged at {0:HH:mm:ss.fff}", e.SignalTime);
-
+            
             foreach (Section section in track.Sections)
             {
                 SectionData data = GetSectionData(section);
@@ -300,7 +299,7 @@ namespace Controller
                 }
 
             }
-
+            //GiveData();
             Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
 
             timer.Start();
@@ -308,19 +307,20 @@ namespace Controller
             {
                 timer.Stop();
                 stopwatch.Reset();
-                CleanupDelegates(); //removes the events form the event handler
-                //do exactly what is needed to start a new race
-                Data.Competition.GiveTimeDifference(Participants, GetEindstand());
-                Data.Competition.GiveAvgSpeed(track, Participants);
-                Data.Competition.GiveLapTimes(Participants);
-                Data.Competition.GivePoints(GetEindstand()); //loopt vast hier
-                //give laptimes
+                GiveData();
+                Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track));
+                CleanupDelegates(); 
                 Race_Finished?.Invoke(this, new RaceFinishedEventArgs() { Participants = Participants});
             }
         }
 
-
-        
+        public void GiveData()
+        {
+                Data.Competition.GiveLapTimes(Participants);
+                Data.Competition.GiveTimeDifference(Participants, GetEindstand());
+                Data.Competition.GiveAvgSpeed(track, Participants);
+                Data.Competition.GivePoints(GetEindstand()); //loopt vast hier
+        }
 
         public void CleanupDelegates()
         {
@@ -330,14 +330,10 @@ namespace Controller
                 Drivers_Changed -= d;
            }
         }
-
         public int getTravelDistanceOfDriver(Driver d)
         {
             return d.Equipment.Performance * d.Equipment.Speed;
         }
-
-        //at every timed event, move the racers
-
         private void SetTimer()
         {
             // Create a timer with half second interval.
@@ -354,15 +350,13 @@ namespace Controller
         {
             driver.LapsCompleted++;
             Console.SetCursorPosition(0, y);
-            Console.Write($"Driver {driver.Name} has completed a lap in {driver.LapTime.TotalSeconds} seconds. Lap nr: {driver.LapsCompleted}"); //program seems to go back in time and change the lapscompleted of a driver. (multithreading issue?)
+            //Console.Write($"Driver {driver.Name} has completed a lap in {driver.LapTime.TotalSeconds} seconds. Lap nr: {driver.LapsCompleted}"); //program seems to go back in time and change the lapscompleted of a driver. (multithreading issue?)
             y++;
         }
-        
         public bool RaceEnded_NoParticipantsLeft()
         {
             return ParticipantsOnTrack == 0;
         }
-
         public bool RaceEnded_LapsCompleted(Track track)
         {
             bool RaceEnded = false;
@@ -377,7 +371,6 @@ namespace Controller
             return RaceEnded;
             
         }
-
         public LinkedList<Driver> GetEindstand()
         {
             return eindstand;

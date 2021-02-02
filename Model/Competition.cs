@@ -38,20 +38,29 @@ namespace Model
                 avgspeeddriver.Speed = tracklength / driver.LapTime.Seconds; //meters per second
                 DriverAverageSpeed.AddItemToList(avgspeeddriver);
             }
-
-            
         }
-
+        public void DisplayBestDriverData()
+        {
+            Console.SetCursorPosition(0, 40);
+            Console.WriteLine($"Coureur met de meeste punten    : {DriverPoints.GetBestDriverName()}");
+            Console.WriteLine($"Coureur met de snelste tijd     : {DriverLapTime.GetBestDriverName()}");
+            //laptime
+            //points
+        }
         public void GiveLapTimes(List<IParticipant> participants)
         {
-            foreach(Driver driver in participants)
-            {
-                DriverLapTime lptdriver = new DriverLapTime();
-                lptdriver.Name = driver.Name;
-                lptdriver.Time = driver.LapTime;
-                DriverLapTime.AddItemToList(lptdriver);
-                driver.LapTime = new TimeSpan(0,00,00);
-            }
+            
+             foreach (Driver driver in participants)
+             { 
+                if (driver.LapTime != null)
+                {
+                    DriverLapTime lptdriver = new DriverLapTime();
+                    lptdriver.Name = driver.Name;
+                    lptdriver.Time = driver.LapTime;
+                    DriverLapTime.AddItemToList(lptdriver);
+                }
+             }
+            
         }
         
         public void GiveTimeDifference(List<IParticipant> participants, LinkedList<Driver> eindstand)

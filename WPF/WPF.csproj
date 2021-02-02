@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Pictures\Drivers\58469c62cef1014c0b5e47f6.png" />
+    <None Remove="Pictures\Drivers\Broken\car_blue_broken.png" />
+    <None Remove="Pictures\Drivers\Broken\car_green_broken.png" />
+    <None Remove="Pictures\Drivers\Broken\car_grey_broken.png" />
+    <None Remove="Pictures\Drivers\Broken\car_red_broken.png" />
+    <None Remove="Pictures\Drivers\Broken\car_yellow_broken.png" />
+    <None Remove="Pictures\Drivers\car_blue.png" />
+    <None Remove="Pictures\Drivers\car_blue_broken.png" />
+    <None Remove="Pictures\Drivers\car_green.png" />
+    <None Remove="Pictures\Drivers\car_green_broken.png" />
+    <None Remove="Pictures\Drivers\car_grey.png" />
+    <None Remove="Pictures\Drivers\car_grey_broken.png" />
+    <None Remove="Pictures\Drivers\car_red.png" />
+    <None Remove="Pictures\Drivers\car_red_broken.png" />
+    <None Remove="Pictures\Drivers\car_yellow.png" />
+    <None Remove="Pictures\Drivers\car_yellow_broken.png" />
+    <None Remove="Pictures\Track\corner.png" />
+    <None Remove="Pictures\Track\empty.png" />
+    <None Remove="Pictures\Track\finish.png" />
+    <None Remove="Pictures\Track\Finish\finish_0.png" />
+    <None Remove="Pictures\Track\Finish\finish_1.png" />
+    <None Remove="Pictures\Track\Finish\finish_2.png" />
+    <None Remove="Pictures\Track\Finish\finish_3.png" />
+    <None Remove="Pictures\Track\LeftCorner\leftcorner_0.png" />
+    <None Remove="Pictures\Track\LeftCorner\leftcorner_1.png" />
+    <None Remove="Pictures\Track\LeftCorner\leftcorner_2.png" />
+    <None Remove="Pictures\Track\LeftCorner\leftcorner_3.png" />
+    <None Remove="Pictures\Track\RightCorner\rightcorner_0.png" />
+    <None Remove="Pictures\Track\RightCorner\rightcorner_1.png" />
+    <None Remove="Pictures\Track\RightCorner\rightcorner_2.png" />
+    <None Remove="Pictures\Track\RightCorner\rightcorner_3.png" />
+    <None Remove="Pictures\Track\Screenshot_2.png" />
+    <None Remove="Pictures\Track\startgrid.png" />
+    <None Remove="Pictures\Track\StartGrid\startgrid_0.png" />
+    <None Remove="Pictures\Track\StartGrid\startgrid_1.png" />
+    <None Remove="Pictures\Track\StartGrid\startgrid_2.png" />
+    <None Remove="Pictures\Track\StartGrid\startgrid_3.png" />
+    <None Remove="Pictures\Track\straight.png" />
+    <None Remove="Pictures\Track\Straight\straight_0.png" />
+    <None Remove="Pictures\Track\Straight\straight_1.png" />
+    <None Remove="Pictures\Track\Straight\straight_2.png" />
+    <None Remove="Pictures\Track\Straight\straight_3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Pictures\Drivers\Broken\car_blue_broken.png" />
+    <Content Include="Pictures\Drivers\Broken\car_green_broken.png" />
+    <Content Include="Pictures\Drivers\Broken\car_grey_broken.png" />
+    <Content Include="Pictures\Drivers\Broken\car_red_broken.png" />
+    <Content Include="Pictures\Drivers\Broken\car_yellow_broken.png" />
+    <Content Include="Pictures\Drivers\car_blue.png" />
+    <Content Include="Pictures\Drivers\car_green.png" />
+    <Content Include="Pictures\Drivers\car_grey.png" />
+    <Content Include="Pictures\Drivers\car_red.png" />
+    <Content Include="Pictures\Drivers\car_yellow.png" />
+    <Content Include="Pictures\Track\empty.png" />
+    <Content Include="Pictures\Track\Finish\finish_0.png" />
+    <Content Include="Pictures\Track\Finish\finish_1.png" />
+    <Content Include="Pictures\Track\Finish\finish_2.png" />
+    <Content Include="Pictures\Track\Finish\finish_3.png" />
+    <Content Include="Pictures\Track\LeftCorner\leftcorner_0.png" />
+    <Content Include="Pictures\Track\LeftCorner\leftcorner_1.png" />
+    <Content Include="Pictures\Track\LeftCorner\leftcorner_2.png" />
+    <Content Include="Pictures\Track\LeftCorner\leftcorner_3.png" />
+    <Content Include="Pictures\Track\RightCorner\rightcorner_0.png" />
+    <Content Include="Pictures\Track\RightCorner\rightcorner_1.png" />
+    <Content Include="Pictures\Track\RightCorner\rightcorner_2.png" />
+    <Content Include="Pictures\Track\RightCorner\rightcorner_3.png" />
+    <Content Include="Pictures\Track\Screenshot_2.png" />
+    <Content Include="Pictures\Track\StartGrid\startgrid_0.png" />
+    <Content Include="Pictures\Track\StartGrid\startgrid_1.png" />
+    <Content Include="Pictures\Track\StartGrid\startgrid_2.png" />
+    <Content Include="Pictures\Track\StartGrid\startgrid_3.png" />
+    <Content Include="Pictures\Track\Straight\straight_0.png" />
+    <Content Include="Pictures\Track\Straight\straight_1.png" />
+    <Content Include="Pictures\Track\Straight\straight_2.png" />
+    <Content Include="Pictures\Track\Straight\straight_3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Controller\Controller.csproj" />
+  </ItemGroup>
+
+</Project>
