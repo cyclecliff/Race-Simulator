@@ -49,12 +49,13 @@ namespace Controller
 
             car.IsBroken = (car.Quality + car.Performance > randomnumber); //the higher the quality and the performance, the less change the car'll break down
 
-            if (!originallybroken) //car not broken when i comes in
+            if (!originallybroken && car.IsBroken) //car not broken when i comes in but broken now
             {
                 car.Performance -= _random.Next((int)0.1, (int)0.5); //performance gets worse after each breakdown
             } 
             //each time a car is turned from unbroken to broken, adjust a value
         }
+
         public virtual void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             timer.Stop();
@@ -146,17 +147,13 @@ namespace Controller
                                         break;
                                     }                                                           
                                         
-
                                     else
                                     {
                                         data.DistanceLeft = 0; //ik kan niet inhalen en niet doorrijden : distance wordt gereset
                                         //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                     }
                                 }
-
-
                             }
-
                         }
                     }
                     else
@@ -255,8 +252,6 @@ namespace Controller
                                         //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                                     }
                                 }
-
-
                             }
 
                         }
@@ -267,7 +262,6 @@ namespace Controller
                         //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
                     }
                 }
-
             }
 
             Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
