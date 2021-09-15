@@ -4,16 +4,40 @@ using System.Text;
 
 namespace Model
 {
-    public class RaceData<T> where T : IDataTemplate
+    public class RaceData<T> where T : IDataTemplate, new()
     {
 
-        private List<T> _list = new List<T>();
-
-        private void addToList(T variable)
+        public List<IDataTemplate> list = new List<IDataTemplate>();
+   
+        public void AddItemToList(T variable)
         {
-            _list.Add(variable);
+            //variable.AddToList(_list);
+            variable.AddToList(list);
+            
+            //list.Add(variable);
         }
 
+        public string GetBestDriverName()
+        {
+            if (list.Count != 0)
+            {
+                var x = list[0].GetBestDriverName(list);
+                return x;
+            }
+            else
+            {
+                return " ";
+            }
+        }
+        //public string GetBestDriverName()
+        //{
+        //    T bestedriver = new T();
+        //    foreach(T driver in list)
+        //    {
+        //        if()
+        //    }
+
+        //}
     }
 
     /*

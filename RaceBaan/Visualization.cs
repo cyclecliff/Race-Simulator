@@ -67,9 +67,10 @@ namespace RaceBaan
 
         public static void OnDriversChanged(object o, DriversChangedEventArgs d)
         {
+            Data.Competition.DisplayBestDriverData();
             DrawTrack(d.track); //casten werkt
         }
-        public static void setDirections(Track track, Direction _startingdirection)
+        public static void SetDirections(Track track, Direction _startingdirection)
         {
             Direction direction = _startingdirection;        
            
@@ -103,7 +104,7 @@ namespace RaceBaan
                  //Direction of each section is now stored in each individual Section-object
             }
         }
-        public static void findOffsetXandY(Track track)
+        public static void FindOffsetXandY(Track track)
         {
             int xoffset = 0;
             int yoffset = 0;
@@ -125,16 +126,32 @@ namespace RaceBaan
                         if (section.Direction == Direction.Left)    {  xoffset -= 5; }
                         break;
                     case SectionTypes.LeftCorner:
-                        if (section.Direction == Direction.Up)      {  yoffset -= 5; xoffset -= 5; }
-                        if (section.Direction == Direction.Right)   {  yoffset -= 5; xoffset += 5; }
-                        if (section.Direction == Direction.Down)    {  yoffset += 5; xoffset += 5; }
-                        if (section.Direction == Direction.Left)    {  yoffset += 5; xoffset -= 5; }
+                        if (section.Direction == Direction.Up)      {  yoffset -= 5; 
+                                                                       xoffset -= 5; 
+                                                                    }
+                        if (section.Direction == Direction.Right)   {  yoffset -= 5; 
+                                                                       xoffset += 5; 
+                                                                    }
+                        if (section.Direction == Direction.Down)    {  yoffset += 5; 
+                                                                       xoffset += 5; 
+                                                                    }
+                        if (section.Direction == Direction.Left)    {  yoffset += 5; 
+                                                                       xoffset -= 5; 
+                                                                    }
                         break;
                     case SectionTypes.RightCorner:
-                        if (section.Direction == Direction.Up)      {  yoffset -= 5; xoffset += 5; }
-                        if (section.Direction == Direction.Right)   {  yoffset += 5; xoffset += 5; }
-                        if (section.Direction == Direction.Down)    {  yoffset += 5; xoffset -= 5; }
-                        if (section.Direction == Direction.Left)    {  yoffset -= 5; xoffset -= 5; }
+                        if (section.Direction == Direction.Up)      {  yoffset -= 5; 
+                                                                       xoffset += 5; 
+                                                                    }
+                        if (section.Direction == Direction.Right)   {  yoffset += 5; 
+                                                                       xoffset += 5; 
+                                                                    }
+                        if (section.Direction == Direction.Down)    {  yoffset += 5; 
+                                                                       xoffset -= 5; 
+                                                                    }
+                        if (section.Direction == Direction.Left)    {  yoffset -= 5; 
+                                                                       xoffset -= 5; 
+                                                                    }
                         break;
                 }
 
@@ -149,7 +166,7 @@ namespace RaceBaan
             track.StartXoffset = xtrueoffset;
             track.StartYoffset = ytrueoffset;
         } // far from perfect..does a good enough job for now.
-        public static void setCoordinatesOfEachSection(Track track)
+        public static void SetCoordinatesOfEachSection(Track track)
         {
             track.StartXoffset = track.StartXoffset * -1;
             track.StartYoffset = track.StartYoffset * -1;
@@ -245,9 +262,9 @@ namespace RaceBaan
         }
         public static void SetTrackData(Track track, Direction startingdirection)
         {
-            setDirections(track, startingdirection); //seems to be doing its job
-            findOffsetXandY(track);                 //5 off
-            setCoordinatesOfEachSection(track);
+            SetDirections(track, startingdirection); //seems to be doing its job
+            FindOffsetXandY(track);                 //5 off
+            SetCoordinatesOfEachSection(track);
         }
         public static void DrawTrack(Track track)
         {
@@ -327,64 +344,64 @@ namespace RaceBaan
 
         private static string[] _Start_Horizontal_1         = { "-----", 
                                                                 "1>   ", 
-                                                                "     ", 
+                                                                "  -  ", 
                                                                 "  2> ", 
                                                                 "-----" };
         private static string[] _Start_Horizontal_3         = { "-----", 
                                                                 " <2  ", 
-                                                                "     ", 
+                                                                "  -  ", 
                                                                 "   <1", 
                                                                 "-----" };
         private static string[] _Start_Vertical_0           = { "|   |", 
                                                                 "|  ^|", 
-                                                                "|  2|", 
+                                                                "| |2|", 
                                                                 "|^  |", 
                                                                 "|1  |" };
         private static string[] _Start_Vertical_2           = { "|  1|", 
                                                                 "|  v|", 
-                                                                "|2  |", 
+                                                                "|2| |", 
                                                                 "|v  |", 
                                                                 "|   |" }; // check
 
         private static string[] _RightCorner_Horizontal_1   = { "----\\ ", 
                                                                 "1   |", 
-                                                                "    |", 
+                                                                "  \\ |", 
                                                                 "2   |", 
                                                                 "\\   |" };
         private static string[] _RightCorner_Horizontal_3   = { "|   \\", 
                                                                 "|   2", 
-                                                                "|    ", 
+                                                                "| \\  ", 
                                                                 "|   1", 
                                                                 "\\----" };
         private static string[] _RightCorner_Vertical_0     = { "/----", 
                                                                 "|    ", 
-                                                                "|    ", 
+                                                                "| /  ", 
                                                                 "|    ", 
                                                                 "|1 2/" };
         private static string[] _RightCorner_Vertical_2     = { "/2 1|", 
                                                                 "    |", 
-                                                                "    |", 
+                                                                "  / |", 
                                                                 "    |", 
                                                                 "----/ " };//check
 
         private static string[] _LeftCorner_Horizontal_1    = { "/   |", 
                                                                 "1   |",        
-                                                                "    |", 
+                                                                "  / |", 
                                                                 "2   |", 
                                                                 "----/" };
         private static string[] _LeftCorner_Horizontal_3    = { "/----", 
                                                                 "|   2", 
-                                                                "|    ", 
+                                                                "| /  ", 
                                                                 "|   1", 
                                                                 "|   /" };
         private static string[] _LeftCorner_Vertical_0      = { "----\\", 
                                                                 "    |",
-                                                                "    |", 
+                                                                " \\  |", 
                                                                 "    |", 
                                                                 "\\1 2|" };
         private static string[] _LeftCorner_Vertical_2      = { "|2 1\\", 
                                                                 "|    ", 
-                                                                "|    ", 
+                                                                "| \\ ", 
                                                                 "|    ", 
                                                                 "\\----" }; 
 

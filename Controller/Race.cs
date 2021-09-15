@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Timers;
+using System.Diagnostics;
 
 namespace Controller
 {
@@ -16,8 +17,10 @@ namespace Controller
         private static Random _random;
         public Dictionary<Section, SectionData> _positions;
         private System.Timers.Timer timer;
+        private Stopwatch stopwatch; //to get the laptime
         public int LapsAmount;
         public int ParticipantsOnTrack;
+        public LinkedList<Driver> eindstand;
       //public delegate EventHandler DriversChanged(object sender, DriversChangedEventArgs d);
 
         public delegate void DriversChanged(object sender, DriversChangedEventArgs d);
@@ -27,6 +30,23 @@ namespace Controller
         public event DriversChanged Drivers_Changed;
 
         public event RaceFinished Race_Finished;
+
+        public Race(Track _track, List<IParticipant> _participants)
+        {
+            track = _track;
+            LapsAmount = 1;
+            Participants = _participants;
+            ParticipantsOnTrack = Participants.Count();
+            _random = new Random(DateTime.Now.Millisecond);
+            _positions = new Dictionary<Section, SectionData>();
+            giveStartPositions(_track, _participants);
+            RandomizeEquipment(_participants);
+            SetTimer(); //already starts invoking ondriverschanged
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+            eindstand = new LinkedList<Driver>(); //drivers in order of finishing
+            //trying to subscribe the driverschanged event to the event handler OnDriversChanged
+        }
 
         public SectionData GetSectionData(Section section)
         {
@@ -40,7 +60,6 @@ namespace Controller
                 return _positions[section];
             }
         }
-
         public static void ShouldBeBroken(IEquipment car) //breaks down cars and undoes it
         {
             int randomnumber = _random.Next(1, 20);
@@ -60,7 +79,7 @@ namespace Controller
         {
             timer.Stop();
             ///Console.WriteLine("DriversChanged at {0:HH:mm:ss.fff}", e.SignalTime);
-
+            
             foreach (Section section in track.Sections)
             {
                 SectionData data = GetSectionData(section);
@@ -83,20 +102,26 @@ namespace Controller
 
                                 if (i == _positions.Count - 1)                              //is hij aan het "einde" van de track
                                 {
+                                    
+                                    
+
                                     if (_positions.ElementAt(0).Value.Left == null && !MovingDriver.Equipment.IsBroken)         //kan ik vooruit (naar het begin)
                                     {
                                         LapCompletedTest(MovingDriver);
 
+                                        MovingDriver.LapTime += (stopwatch.Elapsed - MovingDriver.LapTime);
+                                        
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
                                         {
                                             ParticipantsOnTrack--;
+                                            eindstand.AddLast((Driver)MovingDriver); //adds the finished driver to the eindstand list
+                                           
                                         }
                                         else
                                         {
                                             _positions.ElementAt(0).Value.Left = MovingDriver;
                                             _positions.ElementAt(0).Value.DistanceLeft = leftDistance - 200;
                                         }
-
                                         data.DistanceLeft = 0;
                                         data.Left = null;
                                         //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
@@ -105,9 +130,12 @@ namespace Controller
                                     {
                                         LapCompletedTest(MovingDriver);
 
+                                        MovingDriver.LapTime += (stopwatch.Elapsed - MovingDriver.LapTime);
+                                        
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
                                         {
                                             ParticipantsOnTrack--;
+                                            eindstand.AddLast((Driver)MovingDriver);
                                         }
                                         else
                                         {
@@ -115,7 +143,6 @@ namespace Controller
                                             _positions.ElementAt(0).Value.DistanceRight = leftDistance - 200;
                                           
                                         }
-
                                         data.DistanceLeft = 0;
                                         data.Left = null;
                                         //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
@@ -185,16 +212,18 @@ namespace Controller
                                     {
                                         LapCompletedTest(MovingDriver);
 
+                                        MovingDriver.LapTime += (stopwatch.Elapsed - MovingDriver.LapTime);
+                                        
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
                                         {
                                             ParticipantsOnTrack--;
+                                            eindstand.AddLast((Driver)MovingDriver);
                                         }
                                         else
                                         {
                                             _positions.ElementAt(0).Value.Right = MovingDriver;
                                             _positions.ElementAt(0).Value.DistanceRight = rightDistance - 200;
                                         }
-
                                         data.DistanceRight = 0;
                                         data.Right = null;
                                         //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
@@ -203,9 +232,12 @@ namespace Controller
                                     {
                                         LapCompletedTest(MovingDriver);
 
+                                        MovingDriver.LapTime += (stopwatch.Elapsed - MovingDriver.LapTime);
+                                        
                                         if (MovingDriver.LapsCompleted == LapsAmount) //ronden zijn gereden, driver verdwijnt
                                         {
                                             ParticipantsOnTrack--;
+                                            eindstand.AddLast((Driver)MovingDriver);
                                         }
                                         else
                                         {
@@ -213,7 +245,6 @@ namespace Controller
                                             _positions.ElementAt(0).Value.DistanceLeft = rightDistance - 200;
 
                                         }
-
                                         data.DistanceRight = 0;
                                         data.Right = null;
                                         //Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
@@ -245,7 +276,6 @@ namespace Controller
                                         break;
                                     }
 
-
                                     else
                                     {
                                         data.DistanceRight = 0; //ik kan niet inhalen en niet doorrijden : distance wordt gereset
@@ -263,31 +293,27 @@ namespace Controller
                     }
                 }
             }
-
+            //GiveData();
             Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track)); //activates OnDriversChanged
 
             timer.Start();
             if (RaceEnded_NoParticipantsLeft())
             {
                 timer.Stop();
-                CleanupDelegates(); //removes the events form the event handler
-                //do exactly what is needed to start a new race
+                stopwatch.Reset();
+                GiveData();
+                Drivers_Changed?.Invoke(this, new DriversChangedEventArgs(track));
+                CleanupDelegates(); 
                 Race_Finished?.Invoke(this, new RaceFinishedEventArgs() { Participants = Participants});
             }
         }
 
-        public Race(Track _track, List<IParticipant> _participants)
+        public void GiveData()
         {
-            track = _track;
-            LapsAmount = 0;
-            Participants = _participants;
-            ParticipantsOnTrack = Participants.Count();
-            _random = new Random(DateTime.Now.Millisecond);
-            _positions = new Dictionary<Section, SectionData>();
-            giveStartPositions(_track, _participants);
-            RandomizeEquipment(_participants);
-            SetTimer(); //already starts invoking ondriverschanged
-            //trying to subscribe the driverschanged event to the event handler OnDriversChanged
+                Data.Competition.GiveLapTimes(Participants);
+                Data.Competition.GiveTimeDifference(Participants, GetEindstand());
+                Data.Competition.GiveAvgSpeed(track, Participants);
+                Data.Competition.GivePoints(GetEindstand()); //loopt vast hier
         }
 
         public void CleanupDelegates()
@@ -298,14 +324,10 @@ namespace Controller
                 Drivers_Changed -= d;
            }
         }
-
         public int getTravelDistanceOfDriver(Driver d)
         {
             return d.Equipment.Performance * d.Equipment.Speed;
         }
-
-        //at every timed event, move the racers
-
         private void SetTimer()
         {
             // Create a timer with half second interval.
@@ -317,20 +339,18 @@ namespace Controller
             timer.Enabled = true;
         }
 
-        public int y = 0;
+        public int y = 40;
         public void LapCompletedTest(IParticipant driver)
         {
             driver.LapsCompleted++;
-            Console.SetCursorPosition(50, y);
-            Console.Write($"Driver {driver.Name} has completed a lap. Lap nr: {driver.LapsCompleted}"); //program seems to go back in time and change the lapscompleted of a driver. (multithreading issue?)
+            Console.SetCursorPosition(0, y);
+            //Console.Write($"Driver {driver.Name} has completed a lap in {driver.LapTime.TotalSeconds} seconds. Lap nr: {driver.LapsCompleted}"); //program seems to go back in time and change the lapscompleted of a driver. (multithreading issue?)
             y++;
         }
-        
         public bool RaceEnded_NoParticipantsLeft()
         {
             return ParticipantsOnTrack == 0;
         }
-
         public bool RaceEnded_LapsCompleted(Track track)
         {
             bool RaceEnded = false;
@@ -340,11 +360,15 @@ namespace Controller
             {
                 SectionData data = GetSectionData(section);
 
-                RaceEnded = (data == null) ? true : false;
+                RaceEnded = data == null;
             }
             return RaceEnded;
+            
         }
-
+        public LinkedList<Driver> GetEindstand()
+        {
+            return eindstand;
+        }
 
         //   Dictionairy<Section, SectionData>
         //   <
