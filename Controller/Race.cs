@@ -66,7 +66,7 @@ namespace Controller
 
             bool originallybroken = car.IsBroken;
 
-            car.IsBroken = (car.Quality + car.Performance > randomnumber); //the higher the quality and the performance, the less change the car'll break down
+            car.IsBroken = (car.Quality + car.Performance > randomnumber); //the higher the quality and the performance, the less chance the car'll break down
 
             if (!originallybroken && car.IsBroken) //car not broken when i comes in but broken now
             {

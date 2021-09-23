@@ -29,8 +29,8 @@ namespace ControllerTest
 
 
             var expected =       new LinkedList<Section>();
-                expected.AddLast(new Section(SectionTypes.StartGrid));
                 expected.AddLast(new Section(SectionTypes.Straight));
+                expected.AddLast(new Section(SectionTypes.StartGrid));
 
             var actual = track.sectionToLinkedList(sectiontypes); //reference not set to instance
 

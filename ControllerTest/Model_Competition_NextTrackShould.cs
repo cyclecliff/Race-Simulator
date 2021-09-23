@@ -52,7 +52,7 @@ namespace ControllerTest {
             _competition.Tracks.Enqueue(track);
 
             var result = _competition.NextTrack();   //-1
-           
+     
             Assert.AreEqual(track, result);   //queue empty ofc
         }
 
