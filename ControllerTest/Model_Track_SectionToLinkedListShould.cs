@@ -22,8 +22,8 @@ namespace ControllerTest
         [Test]
         public void SectionToLinkedList_TwoSections_ReturnTwoList ()
         {
-            SectionTypes[] sectiontypes = new[] {    SectionTypes.StartGrid,
-                                                     SectionTypes.Straight};
+            SectionTypes[] sectiontypes = new[] {    SectionTypes.Straight,
+                                                     SectionTypes.StartGrid};
 
             track = new Track("test_track", sectiontypes);
 

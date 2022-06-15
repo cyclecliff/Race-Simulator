@@ -18,7 +18,7 @@ namespace Controller
             addTracks();
             NextRace();
         }
-
+        
         public static void OnRaceFinished(object o, RaceFinishedEventArgs rfe)
         {
             Thread.Sleep(1500);

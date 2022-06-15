@@ -84,7 +84,6 @@ namespace ControllerTest {
             var result1 = _competition.NextTrack();
 
             Assert.IsNull(result1);
-
         }
 
         [Test]

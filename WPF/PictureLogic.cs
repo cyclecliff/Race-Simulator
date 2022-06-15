@@ -122,7 +122,7 @@ namespace WPF
 
         #region png addresses
 
-        public static string empty    =
+        public static string empty    = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Finish\finish_0.png";
 
         public static string finish_0 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Finish\finish_0.png";
         public static string finish_1 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Finish\finish_1.png";

@@ -46,6 +46,8 @@ namespace Model
             Console.WriteLine($"Coureur met de snelste tijd     : {DriverLapTime.GetBestDriverName()}");
             //laptime
             //points
+            // wait x seconds
+
         }
         public void GiveLapTimes(List<IParticipant> participants)
         {
