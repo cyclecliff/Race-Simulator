@@ -9,7 +9,7 @@ namespace WPF
     {
         static int WidthPixels { get; set; }
         static int HeightPixels { get; set; }
-        private static Dictionary<string, Bitmap> StringBitmapKV { get; set; }
+        private static Dictionary<string, Bitmap> StringBitmapKV { get; set; }       //TODO ; Fix misalignment of photos
         public static void Initialize()
         {
            
@@ -120,37 +120,57 @@ namespace WPF
             StringBitmapKV.Clear();
         }
 
-        #region png addresses
+        #region png addresses TRACK
 
+<<<<<<< Updated upstream
         public static string empty    = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Finish\finish_0.png";
+=======
+        public static string empty              = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\empty.png";
+>>>>>>> Stashed changes
 
-        public static string finish_0 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Finish\finish_0.png";
-        public static string finish_1 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Finish\finish_1.png";
-        public static string finish_2 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Finish\finish_2.png";
-        public static string finish_3 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Finish\finish_3.png";
+        public static string finish_0           = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Finish\finish_0.png";
+        public static string finish_1           = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Finish\finish_1.png";
+        public static string finish_2           = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Finish\finish_2.png";
+        public static string finish_3           = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Finish\finish_3.png";
 
-        public static string leftcorner_0 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\LeftCorner\leftcorner_0.png";
-        public static string leftcorner_1 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\LeftCorner\leftcorner_1.png";
-        public static string leftcorner_2 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\LeftCorner\leftcorner_2.png";
-        public static string leftcorner_3 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\LeftCorner\leftcorner_3.png";
+        public static string leftcorner_0       = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\LeftCorner\leftcorner_0.png";
+        public static string leftcorner_1       = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\LeftCorner\leftcorner_1.png";
+        public static string leftcorner_2       = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\LeftCorner\leftcorner_2.png";
+        public static string leftcorner_3       = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\LeftCorner\leftcorner_3.png";
 
-        public static string rightcorner_0 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\RightCorner\rightcorner_0.png";
-        public static string rightcorner_1 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\RightCorner\rightcorner_1.png";
-        public static string rightcorner_2 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\RightCorner\rightcorner_2.png";
-        public static string rightcorner_3 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\RightCorner\rightcorner_3.png";
+        public static string rightcorner_0      = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\RightCorner\rightcorner_0.png";
+        public static string rightcorner_1      = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\RightCorner\rightcorner_1.png";
+        public static string rightcorner_2      = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\RightCorner\rightcorner_2.png";
+        public static string rightcorner_3      = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\RightCorner\rightcorner_3.png";
 
-        public static string startgrid_0 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\StartGrid\startgrid_0.png";
-        public static string startgrid_1 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\StartGrid\startgrid_1.png";
-        public static string startgrid_2 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\StartGrid\startgrid_2.png";
-        public static string startgrid_3 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\StartGrid\startgrid_3.png";
+        public static string startgrid_0        = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\StartGrid\startgrid_0.png";
+        public static string startgrid_1        = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\StartGrid\startgrid_1.png";
+        public static string startgrid_2        = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\StartGrid\startgrid_2.png";
+        public static string startgrid_3        = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\StartGrid\startgrid_3.png";
 
-        public static string straight_0 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Straight\straight_0.png";
-        public static string straight_1 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Straight\straight_1.png";
-        public static string straight_2 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Straight\straight_2.png";
-        public static string straight_3 = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Straight\straight_3.png";
+        public static string straight_0         = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Straight\straight_0.png";
+        public static string straight_1         = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Straight\straight_1.png";
+        public static string straight_2         = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Straight\straight_2.png";
+        public static string straight_3         = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Track\Straight\straight_3.png";
 
         #endregion
 
+
+
+        #region png adresses CARS
+
+        public static string car_blue           = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Drivers\car_blue.png";
+        public static string car_blue_broken    = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Drivers\Broken\car_blue_broken.png";
+        public static string car_green          = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Drivers\car_green.png";
+        public static string car_green_broken   = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Drivers\Broken\car_green_broken.png";
+        public static string car_grey           = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Drivers\car_grey.png";
+        public static string car_grey_broken    = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Drivers\Broken\car_grey_broken.png";
+        public static string car_red            = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Drivers\car_red.png";
+        public static string car_red_broken     = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Drivers\Broken\car_red_broken.png";
+        public static string car_yellow         = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Drivers\car_yellow.png";
+        public static string car_yellow_broken  = @"C:\Users\lubbe\Desktop\GitHub\Race Simulator\WPF\Pictures\Drivers\Broken\car_yellow_broken.png";
+
+        #endregion
 
     }
 }
